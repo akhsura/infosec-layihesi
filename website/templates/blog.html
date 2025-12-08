@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_blog.css') }}">
+<h1>Blog Yazıları</h1>
+{% if user.is_authenticated %}
+    <a href="{{ url_for('views.add_blog') }}" class="btn btn-primary">Yeni Blog Yazısı Əlavə Et</a>
+{% endif %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flash-messages">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<div class="blog-container">
+    {% for post in posts %}
+    <div class="blog-post">
+        <h2>{{ post.title }}</h2>
+        <div class="blog-content">
+    {{ post.content|safe }}
+</div>
+
+        <small>{{ post.date_posted.strftime('%Y-%m-%d %H:%M') }}</small>
+        {% if user.is_authenticated %}
+            <form action="{{ url_for('views.delete_post', post_id=post.id) }}" method="POST" style="display:inline;">
+                <button type="submit" class="delete-btn">Sil</button>
+            </form>
+        {% endif %}
+
+        <h4>Şərhlər:</h4>
+        {% for comment in post.comments %}
+            <p><b>{{ comment.author }}:</b> {{ comment.content }}</p>
+            <form action="{{ url_for('views.delete_comment', comment_id=comment.id) }}" method="POST" style="display:inline;">
+                <button type="submit" class="delete-btn">Sil</button>
+            </form>
+        {% else %}
+            <p>Hələ şərh yoxdur.</p>
+        {% endfor %}
+
+        <form class="comment-form" method="POST" action="{{ url_for('views.add_comment', post_id=post.id) }}">
+            <textarea name="comment" placeholder="Şərhinizi yazın" required></textarea>
+            <button type="submit">Göndər</button>
+        </form>
+
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

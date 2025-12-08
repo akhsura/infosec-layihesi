@@ -1,0 +1,5 @@
+- [x] Update oyunlar2.js to implement quiz structure for hard level
+- [x] Add questionsDB with hard-level questions
+- [x] Implement initGame, showQuestion, submitAnswer functions for hard level
+- [x] Ensure DOM initialization for hard level
+- [ ] Test the changes in hard.html

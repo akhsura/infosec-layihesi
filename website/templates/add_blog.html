@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Yeni Blog Yazısı Əlavə Et{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_blog.css') }}">
+<h1>Yeni Blog Yazısı Əlavə Et</h1>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flash-messages">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<form method="POST" action="{{ url_for('views.add_blog') }}">
+    <div class="form-group">
+        <label for="title">Başlıq:</label>
+        <input type="text" id="title" name="title" required>
+    </div>
+    <div class="form-group">
+        <label for="content">Məzmun:</label>
+        <textarea id="content" name="content" rows="10" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Əlavə Et</button>
+</form>
+
+<a href="{{ url_for('views.blog') }}" class="btn btn-secondary">Geri</a>
+{% endblock %}

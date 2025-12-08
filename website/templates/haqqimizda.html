@@ -1,0 +1,146 @@
+{% extends "base.html" %} 
+{% block title %}Haqqımızda{% endblock %}
+
+{% block content %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haqqımızda</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+       body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Outfit', sans-serif;
+        background: linear-gradient(135deg, #0a0f1f, #1b2340);
+        color:white;
+       }
+       .container {
+        max-width: 1100px;
+        margin: 50px auto;
+        padding: 30px;
+       }
+       .glass-box{
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 30px;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+       }
+       .glass-box a {
+        color: inherit;      
+        text-decoration: none; 
+        transition: color 0.01s;
+    }.glass-box a:hover {
+        color: #00d4ff; 
+        text-decoration: none; }
+
+       h1 {
+        font-size: 42px;
+        font-weight: 800;
+        color: #00d4ff;
+        text-shadow: 0 0 12px #00d4ff80;
+       }
+       .section {
+        margin-top: 25px;
+       }
+       .section h2 
+       {
+        font-size: 28px;
+        color: #63e6ff;
+        margin-bottom: 10px;
+        text-shadow: 0 0 8px #00c3ff60;
+       }
+       p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #e2ecf3;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 15px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .real-world {
+            background: rgba(255,255,255,0.07);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border-left: 3px solid #00d4ff;
+        }
+    </style>
+    </head>
+<body>
+
+<div class="container">
+    <div class="glass-box">
+
+        <h1>Bizim Haqqımızda</h1>
+
+        <p>
+            Bu platforma kriptoqrafiyanı yeni öyrənən istifadəçilər üçün yaradılmış müasir tədris mənbəyidir.
+            Məqsədimiz — informasiya təhlükəsizliyi və kriptoqrafiya sahəsinə giriş verərək həm
+            nəzəri, həm praktiki məlumatları ən aydın formada təqdim etməkdir.
+        </p>
+
+        <div class="section">
+            <h2>🎓 Nə Öyrədə Bilərik?</h2>
+            <p>
+                Burada istifadəçilər simmetrik və assimmetrik şifrələmədən tutmuş,
+                hashing, rəqəmsal imza, blok şifrələri, şəbəkə təhlükəsizliyi və
+                müasir protokolların (TLS, HTTPS və s.) işləmə prinsiplərinə qədər
+                geniş məlumat əldə edə bilərlər.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>🌐 Kriptoqrafiyanın Real Həyat Tətbiqləri</h2>
+
+            <div class="real-world">
+                <p><strong>🔐 Bank sistemləri:</strong> Kart əməliyyatları, şifrələnmiş kanallar, CVV/TAN mexanizmləri.</p>
+                <p><strong>💬 Mesajlaşma:</strong> WhatsApp, Signal və Telegram kimi tətbiqlərdə end-to-end şifrələmə.</p>
+                <p><strong>📡 İnternet təhlükəsizliyi:</strong> HTTPS, VPN, DNSSEC və TLS 1.3 texnologiyaları.</p>
+                <p><strong>🧬 Rəqəmsal imza:</strong> Elektron sənədlərin təsdiqi və dəyişməzliyinin yoxlanması.</p>
+                <p><strong>📦 Bulud servisləri:</strong> Məlumatların şifrələnmiş şəkildə saxlanması.</p>
+                <p><strong>🛂 E-hökumət sistemləri:</strong> E-imza, ASAN Login, şəxsiyyət doğrulama.</p>
+            </div>
+        </div>
+<div class="section">
+    <h2>Tətbiqi Təlimlər və Xarici Dərsliklər</h2>
+    <p>Kriptoqrafiyanı praktiki öyrənmək və bilikləri dərinləşdirmək üçün aşağıdakı resurslar faydalıdır:</p>
+    <ul>
+        <li><a href="https://www.nist.gov/topics/cryptography" target="_blank">NIST Kriptoqrafiya Standartları</a></li>
+        <li><a href="https://www.rfc-editor.org/" target="_blank">RFC sənədləri (TLS, HTTPS protokolları)</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=cryptography+tutorial" target="_blank">YouTube kriptoqrafiya dərslikləri</a></li>
+        <li><a href="https://www.khanacademy.org/computing/computer-science/cryptography" target="_blank">Khan Academy - Kriptoqrafiya dərsləri</a></li>
+        <li><a href="https://www.coursera.org/learn/crypto" target="_blank">Coursera: Cryptography I (Stanford)</a></li>
+        <li><a href="https://crypto101.io/" target="_blank">Crypto 101 - Açıq mənbə kripto dərslikləri</a></li>
+    </ul>
+</div>
+
+        <div class="section">
+            <h2>💡 Missiyamız</h2>
+            <p>
+                Texnologiyanın təhlükəsiz tərəfini hər kəs üçün əlçatan etmək və
+                kriptoqrafiya üzrə bilikləri intuitiv və praktik formada çatdırmaq.
+                Biz istifadəçilərə yalnız nəzəriyyəni deyil, eyni zamanda real problemlərin
+                həllini də öyrədirik.
+            </p>
+        </div>
+
+        <div class="footer">
+            © 2025 — Bütün hüquqlar qorunur.  
+        </div>
+    </div>
+</div>
+
+</body>
+{% endblock %}

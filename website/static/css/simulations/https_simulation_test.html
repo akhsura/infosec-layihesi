@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<title>HTTPS İnteraktiv Simulyasiya</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #020617;
+        color: white;
+        padding: 15px;
+    }
+    .step {
+        display: none;
+        padding: 15px;
+        border-radius: 10px;
+        background: #0f172a;
+        margin-bottom: 15px;
+        position: relative;
+    }
+    .step.active {
+        display: block;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    button {
+        margin-top: 10px;
+        padding: 8px 14px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+    }
+    .btn-next { background: #22c55e; }
+    .btn-check { background: #3b82f6; }
+    .result { margin-top: 8px; font-weight: bold; }
+    input {
+        width: 100%;
+        margin-top: 6px;
+        padding: 6px;
+        border-radius: 6px;
+        border: none;
+    }
+    .diagram {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    .arrow {
+        margin: 0 10px;
+        font-size: 24px;
+        animation: moveArrow 1s ease-in-out;
+    }
+    @keyframes moveArrow {
+        0% {opacity:0; transform: translateY(-10px);}
+        100% {opacity:1; transform: translateY(0);}
+    }
+
+    @media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .step {
+        padding: 10px;
+    }
+
+    input#answer {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 0;
+    }
+
+    .diagram {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 14px;
+    }
+
+    .arrow {
+        font-size: 20px;
+        margin: 5px 0;
+    }
+}
+</style>
+</head>
+<body>
+
+<h3>🌐 HTTPS İnteraktiv Simulyasiya</h3>
+<p>HTTPS bağlantısının necə qurulduğunu addım-addım öyrənəcəksiniz.</p>
+
+<!-- 1-ci mərhələ -->
+<div class="step active" id="step1">
+    <h4>1️⃣ Client → Server (HTTPS sorğusu)</h4>
+    <p>İstifadəçi serverə təhlükəsiz HTTPS sorğusu göndərir.</p>
+    <div class="diagram">
+        <span>Client</span>
+        <span class="arrow">➡️</span>
+        <span>Server</span>
+    </div>
+    <button class="btn-next" onclick="nextStep(2)">Növbəti mərhələ</button>
+</div>
+
+<!-- 2-ci mərhələ -->
+<div class="step" id="step2">
+    <h4>2️⃣ Server → Client (HTTPS sertifikatı)</h4>
+    <p>Server sertifikatını göndərir və client etibarlılığını yoxlayır.</p>
+    <div class="diagram">
+        <span>Server</span>
+        <span class="arrow">➡️</span>
+        <span>Client</span>
+    </div>
+    <button class="btn-next" onclick="nextStep(3)">Növbəti mərhələ</button>
+</div>
+
+<!-- 3-cü mərhələ -->
+<div class="step" id="step3">
+    <h4>3️⃣ Sessiya açarı yaradılır</h4>
+    <p>Client və Server arasında şifrələnmiş sessiya açarı yaradılır və məlumatlar təhlükəsiz ötürülür.</p>
+    <div class="diagram">
+        <span>Client ↔️ Server</span>
+        <span class="arrow">🔑</span>
+        <span>Şifrəli əlaqə</span>
+    </div>
+    <button class="btn-next" onclick="nextStep(4)">Mini Testə başla</button>
+</div>
+
+<!-- Test mərhələsi -->
+<div class="step" id="step4">
+    <h4>✅ Mini Test</h4>
+    <p>HTTPS hansı məqsəd üçün istifadə olunur?</p>
+    <input type="text" id="answer" placeholder="Cavabınızı yazın...">
+    <button class="btn-check" onclick="checkAnswer()">Yoxla</button>
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+function nextStep(step) {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    const activeStep = document.getElementById("step" + step);
+    activeStep.classList.add("active");
+}
+
+// Mini test funksiyası
+function checkAnswer() {
+    const answer = document.getElementById("answer").value.toLowerCase();
+    const result = document.getElementById("result");
+    const inputField = document.getElementById("answer");
+    const checkBtn = document.querySelector(".btn-check");
+
+    const keywords = ["təhlükəsiz", "şifrəl", "məlumat təhlükəsizliyi", "məlumatları qoruma"];
+    const isCorrect = keywords.some(word => answer.includes(word));
+
+    if (isCorrect) {
+        result.innerHTML = "✅ Düzdür! HTTPS məlumatları şifrələyir və təhlükəsizliyi təmin edir.";
+        result.style.color = "#22c55e";
+
+        // Input və düyməni gizlət
+        inputField.style.display = "none";
+        checkBtn.style.display = "none";
+
+
+    } else {
+        result.innerHTML = "❌ Səhvdir. Yenidən cəhd et.";
+        result.style.color = "#ef4444";
+    }
+}
+
+// Enter düyməsi ilə yoxlama
+document.getElementById("answer").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        checkAnswer();
+    }
+});
+</script>
+
+</body>
+</html>

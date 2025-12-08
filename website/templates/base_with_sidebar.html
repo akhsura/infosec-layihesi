@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>{% block title %}Kriptoqrafiya{% endblock %}</title>
+</head>
+<body>
+
+  {% if request.path == '/learn' %}
+  <div id="sidebar">
+    <div class="sidebar-section">
+      <div class="section-title">GİRİŞ</div>
+      <ul class="nav-links">
+       <li>
+ <a href="#" onclick="openRightSidebar(
+  'Kriptoqrafiyaya Giriş',
+  'Giriş\n' +
+  'Kriptoqrafiya məlumatların məxfi saxlanılması, bütövlüyünün qorunması və yalnız icazəli şəxslər tərəfindən oxunmasını təmin edən elmdir. Bu elm həm riyazi, həm də kompüter əsaslı texnologiyalara söykənir.\n\n' +
+  'Tarixi inkişaf\n' +
+  'Qədim dövrlərdə Sezar şifrəsi kimi sadə üsullar istifadə olunurdu. Zaman keçdikcə şifrələmə üsulları mürəkkəbləşdi və riyazi nəzəriyyələr əsasında müasir şifrləmə sistemləri ortaya çıxdı.\n\n' +
+  'Əsas anlayışlar\n' +
+  '- Simmetrik şifrələmə: Eyni açar həm məlumatı şifrələyir, həm də açır (məsələn, AES, DES).\n' +
+  '- Asimmetrik şifrələmə: İctimai və şəxsi açarlardan istifadə olunur (məsələn, RSA, ElGamal).\n' +
+  '- Açarların rolu: Açarın uzunluğu və məxfiliyi təhlükəsizliyin əsas göstəricisidir.\n\n' +
+  'Müasir tətbiqlər\n' +
+  '- İnternet təhlükəsizliyi: SSL/TLS protokolları vasitəsilə məlumat mühafizəsi.\n' +
+  '- Bank və maliyyə sistemləri: Pul əməliyyatlarının təhlükəsizliyi.\n' +
+  '- Rəqəmsal imzalar: Sənədlərin bütövlüyünün və məxfiliyinin qorunması.\n\n' +
+  'Nəticə\n' +
+  'Kriptoqrafiya gündəlik həyatımızda mühüm əhəmiyyət daşıyır. Onun köməyi ilə internetdə təhlükəsiz ünsiyyət qurmaq, maliyyə əməliyyatlarını qorumaq, şəxsi və dövlət məlumatlarını müdafiə etmək mümkündür.'
+)">
+ <i class='bx bx-lock'></i> Kriptoqrafiyaya Giriş
+</a>
+</li>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-title">ƏSAS ALQORİTMLƏR</div>
+      <ul class="nav-links">
+        <li>
+  <a href="#" onclick="openRightSidebar(
+  'Tərs Mətn Şifrələməsi',
+  'Tərs mətn şifrələməsi ən sadə kriptoqrafik üsullardan biridir.\n\n' +
+  'Bu üsulda mətnin hərfləri tərsinə çevrilir və oxunması çətinləşdirilir.\n\n' +
+  'Necə işləyir:\n' +
+  '- Sadə üsul: Mətnin hərfləri tərsinə yazılır (KRIPTO → OTPIRK).\n' +
+  '- Şifrələmə prosesi: Düz mətn ardıcıllıqla tərsinə çevrilir.\n' +
+  '- Deşifrələmə: Şifrələnmiş mətn yenidən tərsinə çevrilərək orijinal mətn bərpa olunur.\n\n' +
+  'Təhlükəsizlik səviyyəsi:\n' +
+  '- Çox zəifdir, asanlıqla açılır.\n' +
+  '- Daha çox öyrənmə və təcrübə məqsədilə istifadə olunur.\n\n' +
+  'Tətbiq sahələri:\n' +
+  '- Tədris və öyrənmə\n' +
+  '- Sadə gizli mesajlar\n' +
+  '- Kriptoqrafiyaya giriş nümunələri\n'
+)">
+  <i class="bx bx-rotate-left"></i> Tərs Mətn Şifrələməsi
+</a>
+</li>
+       <li>
+  <a href="#" onclick="openRightSidebar(
+  'Nömrəli Şifrələmə',
+  'Nömrəli şifrələmə üsulu hərflərin əlifbadakı sırası ilə rəqəmlərə çevrilməsinə əsaslanır.\n\n' +
+  'Necə işləyir:\n' +
+  '- Hərflər rəqəmlərə çevrilir: A=1, B=2, …\n' +
+  '- Məsələn: SALAM → 19 1 12 1 13\n' +
+  '- Deşifrələmə: Rəqəmlər yenidən uyğun hərflərə çevrilir.\n\n' +
+  'Azərbaycan əlifbası (32 hərf):\n' +
+  'a=1, b=2, c=3, ç=4, d=5, e=6, ə=7, f=8, g=9, ğ=10, h=11, x=12, ı=13, i=14, j=15, k=16,\n' +
+  'q=17, l=18, m=19, n=20, o=21, ö=22, p=23, r=24, s=25, ş=26, t=27, u=28, ü=29, v=30, y=31, z=32.\n\n' +
+  'Tətbiq sahələri:\n' +
+  '- Tədris və öyrənmə\n' +
+  '- Sadə gizli mesajlar\n' +
+  '- Kriptoqrafiyaya giriş nümunələri\n'
+)">
+  <i class="bx bx-hash"></i> Nömrəli Şifrələmə
+</a>
+</li>
+ <li>
+  <a href="#" onclick="openRightSidebar(
+  'Qarşılıqlı Şifrələmə',
+  'Asimmetrik şifrələmə iki açar üzərində işləyir:\n\n' +
+  'Açıq açar (Public Key) – hər kəsə verilə bilər, məlumatları şifrələmək üçün istifadə olunur.\n' +
+  'Gizli açar (Private Key) – yalnız sahibi tərəfindən saxlanılır, məlumatları deşifr etmək və imzaları yaratmaq üçün istifadə olunur.\n\n' +
+  'İş prinsipi:\n' +
+  'Məlumatın təhlükəsiz göndərilməsi:\n' +
+  '- Göndərən alıcının açıq açarı ilə məlumatı şifrələyir.\n' +
+  '- Bu məlumat yalnız alıcının gizli açarı ilə oxuna bilər.\n' +
+  '- Beləliklə, üçüncü tərəf məlumatı ələ keçirə bilmir.\n\n' +
+  'Autentifikasiya və imzalama:\n' +
+  '- Göndərən öz gizli açarı ilə mesajı imzalayır.\n' +
+  '- Alıcı göndərənin açıq açarı ilə imzanı yoxlayır.\n' +
+  '- Bu mesajın həqiqətən göndərən tərəfindən gəldiyini və dəyişdirilmədiyini sübut edir.\n\n' +
+  'Üstünlükləri:\n' +
+  '- Təhlükəsizlik – yalnız düzgün açar sahibi məlumatı oxuya bilir.\n' +
+  '- Autentifikasiya – göndərənin şəxsiyyəti doğrulanır.\n' +
+  '- İnkarolunmazlıq – göndərən mesajı inkar edə bilməz.\n\n' +
+  'İstifadə sahələri və praktik nümunələr:\n' +
+  '- HTTPS və SSL/TLS: Bank hesab əməliyyatları.\n' +
+  '- VPN protokolları: İş yerindən uzaqdan şirkət serverinə qoşulmaq.\n' +
+  '- Elektron imza sistemləri: Elektron imza ilə sənəd göndərmək.\n' +
+  '- Blockchain texnologiyaları: Bitcoin və Ethereum əməliyyatlarını imzalamaq.\n' +
+  '- Məxfi mesajlaşma tətbiqləri: Mesaj göndərərkən yalnız qarşı tərəf oxuya bilir.'
+)">
+  <i class="bx bx-transfer-alt"></i> Qarşılıqlı Şifrələmə
+</a>
+</li>
+ <li>
+<a href="#" onclick="openRightSidebar(
+  'Sezar Şifrəsi',
+  'Sezar şifrəsi — mətndəki hər hərfin əlifbada müəyyən sayda irəli və ya geri sürüşdürülməsi ilə aparılan klassik şifrələmə üsuludur.\n\n' +
+  'İş prinsipi:\n' +
+  '- Açar: hərflərin neçə mövqe dəyişdiriləcəyidir (məsələn: 3).\n' +
+  '- A → D, B → E, C → F və s.\n' +
+  '- Məsələn: HELLO → KHOOR.\n\n' +
+  'Üstünlüklər:\n' +
+  '- Çox sadə və sürətli alqoritmdir.\n' +
+  '- Tədris məqsədləri üçün idealdır.\n\n' +
+  'Çatışmazlıqlar:\n' +
+  '- Cəmi 25 mümkün açar olduğu üçün asanlıqla qırıla bilir.\n' +
+  '- Kriptoqrafik cəhətdən güclü deyil.\n\n' +
+  'Tətbiq sahələri:\n' +
+  '- Tarixi şifrələmə.\n' +
+  '- Təhsil və alqoritmik düşüncə inkişafı.\n' +
+  '- Sadə məlumat gizlətmə məqsədləri.'
+)">
+  <i class="bx bx-key"></i> Sezar Şifrəsi
+</a>
+</li>
+ <li>
+<a href="#" onclick="openRightSidebar(
+  'ROT13',
+  'ROT13 — Sezar şifrəsinin 13 mövqe sürüşdürmə ilə aparılan xüsusi variantıdır.\n\n' +
+  'İş prinsipi:\n' +
+  '- Açar həmişə 13-dür.\n' +
+  '- A → N, N → A.\n' +
+  '- HELLO → URYYB, URYYB → HELLO.\n\n' +
+  'Xüsusiyyəti:\n' +
+  '- Öz-özünü tərsinə çevirən şifrədir (iki dəfə tətbiq ediləndə orijinal mətn alınır).\n\n' +
+  'Üstünlüklər:\n' +
+  '- Sadə və sürətlidir.\n' +
+  '- Spoiler və gizlətmə məqsədləri üçün uyğundur.\n\n' +
+  'Çatışmazlıqlar:\n' +
+  '- Kriptoqrafik təhlükəsizliyi yoxdur.\n\n' +
+  'Tətbiq sahələri:\n' +
+  '- Forumlarda spoiler gizlətmə.\n' +
+  '- Tədris və nümunələr.\n' +
+  '- Sadə məlumat gizlətmə.'
+)">
+  <i class="bx bx-cog"></i> ROT13
+</a>
+</li>
+ <li>
+<a href="#" onclick="openRightSidebar(
+  'Affine Şifrəsi',
+  'Affine şifrəsi — klassik substitusiya şifrələmə üsuludur, Sezar şifrəsindən fərqli olaraq iki parametrli riyazi funksiya ilə hərfləri dəyişdirir.\n\n' +
+  'Riyazi funksiya:\n' +
+  'E(x) = (a * x + b) % m\n' +
+  '- x → hərf indeksi (A=0, B=1 …)\n' +
+  '- m → əlifba uzunluğu (26)\n' +
+  '- a, b → açar parametrləri (a və m sadə olmalıdır)\n\n' +
+  'İş prinsipi:\n' +
+  '- Hərf indeksi alınır\n' +
+  '- (a * x + b) % 26 funksiyası tətbiq edilir\n' +
+  '- Yeni indeksə uyğun hərf seçilir\n\n' +
+  'Misal:\n' +
+  '- Mətn: HELLO\n' +
+  '- Açar: a=5, b=8\n' +
+  '- Şifrələmə → RCLLA\n\n' +
+  'Üstünlüklər:\n' +
+  '- Daha mürəkkəb və Sezar-dan güclüdür\n' +
+  '- İki parametr sayəsində açar kombinasiyaları çoxdur\n\n' +
+  'Çatışmazlıqlar:\n' +
+  '- Müasir kripto standartları üçün zəifdir\n' +
+  '- Kiçik əlifba ilə brute-force hücumuna açıqdır\n\n' +
+  'Tətbiq sahələri:\n' +
+  '- Tarixi şifrələmə və tədris məqsədləri\n' +
+  '- Alqoritmik öyrənmə və sadə gizlətmə.'
+)">
+  <i class="bx bx-target-lock"></i> Affine Şifrəsi
+</a>
+</li>
+<li>
+ <a href="#" onclick='openRightSidebar(
+  "Playfair Şifrəsi",
+  "Playfair şifrəsi 1854-cü ildə ixtira edilmiş, müharibələrdə istifadə olunan qədim, lakin çox maraqlı bir şifrələmə metodudur. Ənənəvi şifrələrdən fərqli olaraq, Playfair hərfləri tək-tək deyil, cüt-cüt (diqraflar) şifrələyir.\n\n" +
+  "Açarı Hazırlamaq: 5x5 Kvadrat\n" +
+  "- Açar Söz: Seçilmiş açar sözün (məsələn, \"MONARCHY\") hərfləri cədvəlin ilk hissəsinə ardıcıllıqla yazılır. Təkrar hərflər və adətən \"J\" hərfi buraxılır.\n" +
+  "- Qalan Hərflər: Açarda istifadə olunmayan qalan əlifba hərfləri (A-dan Z-yə) cədvəlin boş yerlərinə düzülür.\n" +
+  "- Qeyd: \"J\" hərfi ümumiyyətlə \"I\" ilə əvəz edilir, çünki cədvəldə yalnız 25 yer var.\n\n" +
+  "Mətni Cütləşdirmək (Diqraflar)\n" +
+  "- Normal cütlər: \"in\", \"st\", \"ru\", \"me\" kimi.\n" +
+  "- Təkrar hərflər: Əgər cütdə eyni hərflər varsa (məsələn, \"LL\" hərfi \"HELLO\" sözündə), araya \"X\" əlavə olunur: HL → HE · LX · LO.\n" +
+  "- Son hərf: Əgər mətnin sonunda tək hərf qalırsa, yanına \"Z\" əlavə olunur: INSTRUMENTS → INSTRUMENTSZ.\n\n" +
+  "Şifrələmə Qaydaları\n" +
+  "- Eyni sətirdədirsə: Hər iki hərf özünün sağındakı hərflə əvəz olunur (sətrin sonundadırsa, əvvələ qayıdır).\n" +
+  "- Eyni sütundadırsa: Hər iki hərf özünün altındakı hərflə əvəz olunur (sütunun sonundadırsa, yuxarı qayıdır).\n" +
+  "- Düzbucaqlı əmələ gətirirsə: Hər hərf öz sətirində, digər hərfin sütununda yerləşən hərflə əvəz olunur.\n\n" +
+  "Şifrə Açma (Dekriptasiya)\n" +
+  "- Eyni sətirdədirsə: Sola sürüşdürülür.\n" +
+  "- Eyni sütundadırsa: Yuxarı sürüşdürülür.\n" +
+  "- Düzbucaqlıdırsa: Diaqonal dəyişmə eyni qalır.\n\n" +
+  "Beləliklə, mətn təkrar olaraq cütlərə ayrılır və sadə həndəsi prinsiplərlə orijinal mətn geri qaytarılır."
+)'>
+  <i class="bx bx-grid"></i> Playfair Şifrəsi
+</a>
+</li>
+  </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-title">QABAQCIL ALQORİTMLƏR</div>
+      <ul class="nav-links">
+        <li>
+<a href="#" onclick='openRightSidebar(
+  "Vigenère Şifrəsi",
+  "Vigenère şifrəsi — polialfabetik substitusiya şifrələmə üsuludur.\n\n" +
+  "İş prinsipi:\n" +
+  "- Mətn və açar söz seçilir.\n" +
+  "- Açar sözdəki hərf mətnin hər hərfi ilə uyğunlaşdırılır.\n" +
+  "- Hər hərf A=0, B=1 … Z=25 indekslərlə göstərilir.\n" +
+  "- Şifrələmə düsturu: C_i = (M_i + K_i) % 26\n  (M_i = mətnin hərfi indeksi, K_i = açarın hərfi indeksi)\n" +
+  "- Polialfabetik olduğu üçün eyni hərf hər zaman eyni nəticəni vermir.\n\n" +
+  "Misal:\n" +
+  "- Mətn: HELLO\n" +
+  "- Açar söz: KEY\n" +
+  "- Şifrələmə → RIJVS\n\n" +
+  "Üstünlüklər:\n" +
+  "- Sezar-dan güclüdür.\n" +
+  "- Polialfabetik olduğu üçün daha mürəkkəbdir.\n" +
+  "- Qısa açar ilə belə çox kombinasiya mümkündür.\n\n" +
+  "Çatışmazlıqlar:\n" +
+  "- Təkrarlanan açarlar üçün qırılması asandır.\n" +
+  "- Müasir kripto üçün zəifdir.\n\n" +
+  "Tətbiq sahələri:\n" +
+  "- Tarixi şifrələmə.\n" +
+  "- Tədris və alqoritmik düşüncə.\n" +
+  "- Sadə məlumat gizlətmə."
+)'>
+  <i class="bx bx-lock"></i> Vigenère Şifrəsi
+</a>
+</li>
+ <li>
+<a href="#" onclick='openRightSidebar(
+  "Hill Şifrəsi",
+  "Hill şifrəsi — xətti cəbrə əsaslanan blok tipli şifrələmə üsuludur. Mətni müəyyən ölçülü bloklara ayıraraq hər bloku matrixlə vurub şifrələyir.\n\n" +
+  "İş prinsipi (2×2 matrix):\n" +
+  "- Hər hərf A=0, B=1 ... Z=25 kimi ədədlərə çevrilir.\n" +
+  "- Sonra düstur tətbiq olunur:\n" +
+  "C = (AçarMatrix × MətnVektoru) % 26\n\n" +
+  "Misal:\n" +
+  "- Açar matrix:\n" +
+  "[3  3]\n" +
+  "[2  5]\n" +
+  "- Mətn: HELLO → HE LL OX (cütləşdirmək üçün X artırılır)\n\n" +
+  "- HE → (7,4)\n" +
+  "C1 = (3·7 + 3·4) % 26 = 33 % 26 = 7 → H\n" +
+  "C2 = (2·7 + 5·4) % 26 = 34 % 26 = 8 → I\n" +
+  "Nəticə: HI ...\n\n" +
+  "Üstünlüklər:\n" +
+  "- Çox sürətli blok şifrəsidir.\n" +
+  "- Tək hərf deyil, blok dəyişdiyi üçün analizə davamlıdır.\n\n" +
+  "Çatışmazlıqlar:\n" +
+  "- Açar matrixinin determinantı 26 ilə qarşılıqlı sadə olmalıdır.\n" +
+  "- Müasir kriptoqrafiya üçün zəifdir.\n\n" +
+  "Tətbiq sahələri:\n" +
+  "- Tədris, alqoritmik düşüncə\n" +
+  "- Klassik kriptoqrafiya nümunələri"
+)'>
+  <i class="bx bx-math"></i> Hill Şifrəsi
+</a>
+</li>
+<li>
+ <a href="#" onclick="openRightSidebar(
+  'Base64',
+  'Base64 — ikilik (binary) məlumatı mətn formasına çevirmək üçün istifadə olunan kodlaşdırma standartıdır. Şifrələmə deyil, yalnız kodlaşdırmadır.\n\n' +
+  'İş prinsipi:\n' +
+  '- Məlumat əvvəlcə ikilik formaya çevrilir.\n' +
+  '- Bitlər 6-bitlik qruplara bölünür.\n' +
+  '- Hər 6-bit Base64 əlifbasındakı bir simvola çevrilir.\n' +
+  '- A–Z, a–z, 0–9, + və / istifadə olunur.\n' +
+  '- Doldurma üçün = əlavə oluna bilər.\n\n' +
+  'Nümunə:\n' +
+  '- Mətn: ABC\n' +
+  '- Binary: 01000001 01000010 01000011\n' +
+  '- 6-bit qruplar: 010000 010100 001001 000011\n' +
+  '- Nəticə: QUJD\n\n' +
+  'Üstünlüklər:\n' +
+  '- Binary məlumatı mətn kimi ötürməyə imkan verir.\n' +
+  '- JSON, API, Email MIME formatında geniş istifadə olunur.\n' +
+  '- Faylları mətnə çevirmək üçün uyğundur.\n\n' +
+  'Çatışmazlıqlar:\n' +
+  '- Məlumatı ~33% böyüdür.\n' +
+  '- Təhlükəsizlik üçün istifadə edilə bilməz (şifrələmə deyil).\n\n' +
+  'Tətbiq sahələri:\n' +
+  '- Data URI (HTML içində şəkil yerləşdirmə)\n' +
+  '- JWT tokenlərinin hissələri\n' +
+  '- Email sistemləri\n' +
+  '- API-lərdə binary data göndərilməsi'
+)">
+  <i class="bx bx-code-alt"></i> Base64
+</a>
+</li>
+ <li><a href="#" onclick="openRightSidebar(
+  'AES Şifrələmə',
+  'AES (Advanced Encryption Standard) — simmetrik açar əsaslı blok tipli şifrələmə alqoritmidir.\n\n' +
+  'İş prinsipi:\n' +
+  '- Məlumat bloklara bölünür (128 bit).\n' +
+  '- Eyni açar ilə şifrələnir və deşifrələnir.\n' +
+  '- 128, 192 və 256-bit açarlar dəstəklənir.\n' +
+  '- Blokların şifrələnməsi üçün müxtəlif rejimlər mövcuddur: ECB, CBC, CFB, OFB, GCM.\n\n' +
+  'Nümunə (sadələşdirilmiş):\n' +
+  '- Mətn: HELLO\n' +
+  '- Açar: 1234567890123456\n' +
+  '- Şifrələnmiş nəticə: 3ad77bb40d7a3660a89ecaf32466ef97\n\n' +
+  'Üstünlüklər:\n' +
+  '- Yüksək təhlükəsizlik və sürət.\n' +
+  '- Simmetrik şifrələmə olduğu üçün açar idarəsi sadədir.\n\n' +
+  'Çatışmazlıqlar:\n' +
+  '- Eyni açardan istifadə edərkən məlumatın təkrarı müəyyən edilə bilər (rejimlər vacibdir).\n\n' +
+  'Tətbiq sahələri:\n' +
+  '- Fayl şifrələməsi\n' +
+  '- HTTPS/SSL\n' +
+  '- VPN-lər və məlumat bazası qorunması'
+)">
+  <i class="bx bx-shield"></i> AES
+</a>
+</li>
+        <li><a href="#" onclick="openRightSidebar(
+  'RSA Şifrələmə',
+  'RSA (Rivest–Shamir–Adleman) — asimmetrik açar əsaslı şifrələmə alqoritmidir.\n\n' +
+  'İş prinsipi:\n' +
+  '- İki açar istifadə olunur: açıq açar (public key) və gizli açar (private key).\n' +
+  '- Məlumat açıq açarla şifrələnir, yalnız gizli açarla deşifrələnir.\n' +
+  '- Böyük ədədlərin faktorizasiyası RSA-nın təhlükəsizlik əsasıdır.\n\n' +
+  'Nümunə (sadələşdirilmiş):\n' +
+  '- Mətn: HELLO\n' +
+  '- Public key: (e,n)\n' +
+  '- Private key: (d,n)\n' +
+  '- Şifrələnmiş nəticə: 2790 1975 2881 ...\n\n' +
+  'Üstünlüklər:\n' +
+  '- Asimmetrik açar sayəsində açar idarəsi daha təhlükəsizdir.\n' +
+  '- Elektron imza və sertifikatlarda geniş istifadə olunur.\n\n' +
+  'Çatışmazlıqlar:\n' +
+  '- Simmetrik AES qədər sürətli deyil.\n' +
+  '- Uzun açarlar tələb edir (2048 bit və ya daha çox).\n\n' +
+  'Tətbiq sahələri:\n' +
+  '- SSL/TLS şifrələməsi\n' +
+  '- Elektron imzalar\n' +
+  '- Məlumat mübadiləsi və autentifikasiya'
+)">
+  <i class="bx bx-lock-alt"></i> RSA
+</a>
+</li>
+        <li><a href="#" onclick="openRightSidebar(
+  'DES Şifrələmə',
+  'DES (Data Encryption Standard) — simmetrik açar əsaslı blok tipli şifrələmə alqoritmidir.\n\n' +
+  'İş prinsipi:\n' +
+  '- Məlumat bloklara bölünür (64 bit).\n' +
+  '- 56-bitlik açar istifadə olunur (64 bitlik açardan 8 biti yoxlama üçün).\n' +
+  '- Bloklar 16 dövrə (round) şifrələnmə əməliyyatından keçir.\n' +
+  '- ECB, CBC kimi müxtəlif rejimlərdən istifadə olunur.\n\n' +
+  'Nümunə (sadələşdirilmiş):\n' +
+  '- Mətn: HELLO\n' +
+  '- Açar: 12345678\n' +
+  '- Şifrələnmiş nəticə: 8b8a1f0d3c2e4f6a\n\n' +
+  'Üstünlüklər:\n' +
+  '- Sadə və sürətli şifrələmə alqoritmidir.\n' +
+  '- Tarixi baxımdan çox istifadə olunub.\n\n' +
+  'Çatışmazlıqlar:\n' +
+  '- 56-bit açar müasir standartlara görə artıq zəifdir.\n' +
+  '- Böyük həcmli məlumat üçün AES daha məqsədəuyğundur.\n\n' +
+  'Tətbiq sahələri:\n' +
+  '- Tarixi bank və maliyyə sistemləri\n' +
+  '- Fayl şifrələməsi\n' +
+  '- Elektron ödəniş sistemləri (əvvəllər)'
+)">
+  <i class="bx bx-chip"></i> DES
+</a>
+</li>
+        <li><a href="#" onclick='openRightSidebar(
+  "HMAC",
+  "HMAC — mesajların bütövlüyünü və autentikasiyasını təmin etmək üçün hash funksiyalarından istifadə edən kodlaşdırma metodudur.\n\n" +
+  "İş prinsipi:\n" +
+  "- Məlumat və gizli açar hash funksiyasına daxil edilir.\n" +
+  "- Nəticədə sabit uzunluqda MAC (Message Authentication Code) alınır.\n" +
+  "- Populyar hash funksiyaları: SHA-256, SHA-1, MD5.\n\n" +
+  "Nümunə (sadələşdirilmiş):\n" +
+  "- Mesaj: HELLO\n" +
+  "- Açar: secretkey\n" +
+  "- HMAC-SHA256 nəticəsi: aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d\n\n" +
+  "Üstünlüklər:\n" +
+  "- Mesajın dəyişdirilmədiyini təmin edir.\n" +
+  "- Simmetrik açar əsaslıdır, sürətlidir.\n" +
+  "- TLS, HTTPS, JWT kimi protokollarda geniş istifadə olunur.\n\n" +
+  "Çatışmazlıqlar:\n" +
+  "- Gizli açar sızarsa təhlükəsizlik pozulur.\n" +
+  "- Şifrələmə təmin etmir, yalnız autentifikasiya və bütövlük.\n\n" +
+  "Tətbiq sahələri:\n" +
+  "- API autentifikasiyası\n" +
+  "- Mesaj bütövlüyü yoxlaması\n" +
+  "- JWT tokenlərinin doğrulanması"
+)'>
+  <i class="bx bx-check-shield"></i> HMAC
+</a>
+</li>
+        <li><a href="#" onclick='openRightSidebar(
+  "Blowfish",
+  "Blowfish — simmetrik açar əsaslı blok tipli şifrələmə alqoritmidir, 1993-cü ildə Bruce Schneier tərəfindən hazırlanmışdır.\n\n" +
+  "Əsas xüsusiyyətləri:\n" +
+  "- Simmetrik şifrələmə: Eyni açar ilə məlumat şifrələnir və deşifrələnir.\n" +
+  "- Blok şifrəsi: Məlumat 64-bitlik bloklar halında işlənir.\n" +
+  "- Açar uzunluğu 32–448 bit arasında dəyişə bilir.\n" +
+  "- Feistel şəbəkəsi prinsipi ilə 16 dövrə (round) şifrələmə aparılır.\n" +
+  "- Pulsuz və patent məhdudiyyəti yoxdur.\n\n" +
+  "İş prinsipi (sadə izah):\n" +
+  "1. Key Expansion: Verilən açardan çoxlu sayda daxili alt-açarlar yaradılır.\n" +
+  "2. Feistel rounds: Hər 64-bitlik blok 16 dövrə boyunca qarışdırılır. Blok L və R hissələrə bölünür, F funksiyası ilə işlənir və yerlər dəyişdirilir.\n\n" +
+  "Nümunə (sadələşdirilmiş):\n" +
+  "- Mətn: HELLO\n" +
+  "- Açar: mysecretkey\n" +
+  "- Şifrələnmiş nəticə: 6a2f1b3c4d5e7f8a\n\n" +
+  "Üstünlükləri:\n" +
+  "- Sürətli və təhlükəsiz.\n" +
+  "- Açar uzunluğu elastikdir (32–448 bit).\n" +
+  "- Kiçik qurğularda və IoT sistemlərində də istifadə oluna bilər.\n" +
+  "- Pulsuz, heç bir patent tələb etmir.\n\n" +
+  "Zəif cəhətləri:\n" +
+  "- 64-bit blok uzunluğu müasir standartlara görə kiçikdir.\n" +
+  "- AES qədər standartlaşmayıb.\n" +
+  "- Böyük məlumatlarda bəzi hücumlara qarşı həssas ola bilər.\n\n" +
+  "Tətbiq sahələri:\n" +
+  "- Fayl və məlumat şifrələməsi\n" +
+  "- VPN və təhlükəsizlik protokolları\n" +
+  "- Köhnə bank və sənaye tətbiqləri\n" +
+  "- Open-source təhlükəsizlik paketləri"
+)'>
+  <i class="bx bx-wind"></i> Blowfish
+</a>
+</li>
+        <li><a href="#" onclick='openRightSidebar(
+  "ElGamal",
+  "ElGamal — 1985-ci ildə Taher ElGamal tərəfindən yaradılmış asimmetrik (public key) şifrələmə alqoritmidir.\n\n" +
+  "Əsas xüsusiyyətləri:\n" +
+  "- Asimmetrik şifrələmə: Məlumat açıq açarla şifrələnir, yalnız gizli açarla deşifrələnir.\n" +
+  "- Public key sistemi: Açar idarəsi rahatdır, gizli açar sızmadığı müddətcə təhlükəsizdir.\n" +
+  "- Riyazi əsaslar: Böyük ədədlərin diskret logaritm problemi üzərində qurulub.\n\n" +
+  "İş prinsipi:\n" +
+  "1. Açar yaradılması:\n" +
+  "- Böyük təsadüfi ədəd p seçilir (modulus).\n" +
+  "- Generator g seçilir.\n" +
+  "- Gizli açar x seçilir, 1 < x < p-1.\n" +
+  "- Açıq açar y = g^x mod p hesablanır.\n\n" +
+  "2. Şifrələmə:\n" +
+  "- Mesaj m açıq açar y ilə şifrələnir.\n" +
+  "- Təsadüfi ədəd k seçilir.\n" +
+  "- Şifrələnmiş mətn: c1 = g^k mod p, c2 = m * y^k mod p.\n\n" +
+  "3. Deşifrələmə:\n" +
+  "- Gizli açar x ilə mesaj bərpa olunur: m = c2 * (c1^x)^-1 mod p.\n\n" +
+  "Üstünlükləri:\n" +
+  "- Yüksək təhlükəsizlik.\n" +
+  "- Açıq açar paylaşmaq kifayətdir.\n" +
+  "- Elektron imza və şifrələmə üçün uyğundur.\n\n" +
+  "Zəif cəhətləri:\n" +
+  "- AES və DES-dən daha yavaşdır.\n" +
+  "- Böyük ədədlərlə işləyir, resurs tələb edir.\n" +
+  "- Hər şifrələmə üçün təsadüfi ədəd seçilməlidir.\n\n" +
+  "Tətbiq sahələri:\n" +
+  "- Elektron imza.\n" +
+  "- SSL/TLS.\n" +
+  "- Mesaj şifrələməsi.\n" +
+  "- Asimmetrik şifrələmə tələb edən protokollar."
+)'>
+  <i class="bx bx-cube"></i> ElGamal
+</a>
+</li>
+        <li><a href="#" onclick='openRightSidebar(
+  "ChaCha20",
+  "ChaCha20 — simmetrik açar əsaslı axın (stream) tipli şifrələmə alqoritmidir, Daniel J. Bernstein tərəfindən hazırlanmışdır.\n\n" +
+  "Əsas xüsusiyyətləri:\n" +
+  "- Simmetrik şifrələmə: Eyni açar ilə məlumat şifrələnir və deşifrələnir.\n" +
+  "- Axın şifrələmə: Məlumat byte-by-byte şifrələnir, bloklara bölünmür.\n" +
+  "- 256-bit açar və 64-bit nonce istifadə olunur.\n" +
+  "- AES-dən daha sürətli və təhlükəsizdir, xüsusilə proqramlaşdırma və mobil qurğular üçün.\n\n" +
+  "İş prinsipi (sadə izah):\n" +
+  "1. Başlanğıc vəziyyəti (state) yaradılır: 256-bit açar, 64-bit nonce və 32-bit counter daxil edilir.\n" +
+  "2. ChaCha20 qradiyent funksiyası 20 addım (round) üzrə işləyir, məlumatın yüksək qarışıqlığını təmin edir.\n" +
+  "3. Şifrələnmiş axın mətni yaradılır: plaintext XOR key stream.\n\n" +
+  "Nümunə (sadələşdirilmiş):\n" +
+  "- Mətn: HELLO\n" +
+  "- Açar: 256-bit secret key\n" +
+  "- Nonce: 64-bit random value\n" +
+  "- Şifrələnmiş nəticə: e3c5a8f92b1d...\n\n" +
+  "Üstünlükləri:\n" +
+  "- Çox sürətlidir, xüsusilə proqram və mobil platformalarda.\n" +
+  "- AES-256 ilə müqayisədə oxşar təhlükəsizlik təmin edir.\n" +
+  "- Düşük resurs tələblidir.\n" +
+  "- Geniş istifadə: TLS, VPN, SSH, mobil tətbiqlər.\n\n" +
+  "Zəif cəhətləri:\n" +
+  "- Axın şifrəsi olduğu üçün eyni açar və nonce təkrarlanmamalıdır.\n" +
+  "- Yanlış nonce istifadəsi təhlükəsizlik riskləri yarada bilər.\n\n" +
+  "Tətbiq sahələri:\n" +
+  "- TLS 1.3 (HTTPS)\n" +
+  "- VPN protokolları (WireGuard)\n" +
+  "- Mobil şifrələmə tətbiqləri\n" +
+  "- Axın tipli məlumatların qorunması"
+)'>
+  <i class="bx bx-bolt-circle"></i> ChaCha20
+</a>
+</li>
+      <li><a href="#" onclick='openRightSidebar(
+  "Twofish",
+  "Twofish — simmetrik açar əsaslı blok şifrələmə alqoritmidir və AES standartı üçün finala qədər yüksəlmiş ən güclü namizədlərdən biri olmuşdur. 1998-ci ildə Bruce Schneier və komandası tərəfindən hazırlanmışdır.\n\n" +
+  "Əsas xüsusiyyətləri:\n" +
+  "- Simmetrik şifrələmə: Eyni açar ilə şifrələmə və deşifrələmə.\n" +
+  "- Blok ölçüsü: 128 bit.\n" +
+  "- Açar uzunluğu: 128, 192 və ya 256 bit.\n" +
+  "- Feistel tipli quruluşun təkmilləşdirilmiş versiyasından istifadə edir.\n" +
+  "- Sürətli, təhlükəsiz və elastik açar cədvəli quruluşuna malikdir.\n\n" +
+  "İş prinsipi (sadə izah):\n" +
+  "1. Açar genişləndirilməsi (Key Schedule): Verilmiş açardan çox sayda alt-açar çıxarılır.\n" +
+  "2. 16 Round Feistel quruluşu: Məlumat iki hissəyə bölünür və hər dövrədə qarışdırılır.\n" +
+  "3. S-box və MDS matrisi: Şifrələmənin qarışıqlığını və dağınıqlığını artırır.\n" +
+  "4. 128-bitlik blok tamamlandıqda nəticə alınır.\n\n" +
+  "Nümunə (sadələşdirilmiş):\n" +
+  "- Mətn: HELLO\n" +
+  "- Açar: 256-bit açar\n" +
+  "- Şifrələnmiş nəticə: a9f13c7d91b2e4...\n\n" +
+  "Üstünlükləri:\n" +
+  "- AES ilə rəqabət apara biləcək səviyyədə təhlükəsizlik.\n" +
+  "- Səsvermə cihazları, fayl sistemləri kimi real tətbiqlərdə istifadə olunur.\n" +
+  "- Açar cədvəli elastik və güclü quruluşa malikdir.\n" +
+  "- Patent məhdudiyyəti yoxdur, tam açıqdır.\n\n" +
+  "Zəif cəhətləri:\n" +
+  "- AES qədər geniş standartlaşmayıb.\n" +
+  "- Kompleks quruluşuna görə bəzi sistemlərdə daha yavaş ola bilər.\n\n" +
+  "Tətbiq sahələri:\n" +
+  "- TrueCrypt/Veracrypt kimi şifrələmə proqramları\n" +
+  "- Fayl və disk şifrələməsi\n" +
+  "- Kriptoqrafik kitabxanalar\n" +
+  "- Güclü təhlükəsizlik tələb edən sənaye tətbiqləri"
+)'>
+  <i class="bx bx-dna"></i> Twofish
+</a>
+</li>
+      <li><a href="#" onclick='openRightSidebar(
+  "Camellia",
+  "Camellia — yüksək təhlükəsizlik səviyyəsinə malik simmetrik blok şifrələmə alqoritmidir. 2000-ci ildə Mitsubishi və NTT tərəfindən hazırlanmış və sonradan beynəlxalq standartlara daxil edilmişdir.\n\n" +
+  "Əsas xüsusiyyətləri:\n" +
+  "- Simmetrik açar əsaslı şifrələmə.\n" +
+  "- Blok ölçüsü: 128 bit.\n" +
+  "- Açar uzunluğu: 128, 192 və 256 bit.\n" +
+  "- Feistel quruluşunun təkmilləşdirilmiş forması.\n" +
+  "- Dizayn olaraq AES ilə eyni səviyyədə təhlükəsizlik məqsədi daşıyır.\n\n" +
+  "İş prinsipi (sadə izah):\n" +
+  "1. Açar genişləndirilməsi: Verilmiş açardan çoxlu alt-açarlar yaradılır.\n" +
+  "2. 18 və ya 24 round (açar uzunluğundan asılı olaraq):\n" +
+  "- F-funksiyası ilə nonlinear çevrilmələr.\n" +
+  "- S-box qarışdırması.\n" +
+  "- XOR və dövri dəyişmə əməliyyatları.\n" +
+  "3. 128-bitlik blokun şifrələnmiş forması alınır.\n\n" +
+  "Nümunə (sadələşdirilmiş):\n" +
+  "- Mətn: HELLO\n" +
+  "- Açar: 256-bit key\n" +
+  "- Şifrələnmiş nəticə: f13a9c87d2b44e...\n\n" +
+  "Üstünlükləri:\n" +
+  "- AES səviyyəsində yüksək təhlükəsizlik.\n" +
+  "- Avropa və Asiya standartları tərəfindən təsdiqlənib (ISO/IEC 18033-3).\n" +
+  "- Mobil, server və aparat səviyyəsində yüksək performans.\n" +
+  "- Açıq standart və pulsuz istifadəyə uyğundur.\n\n" +
+  "Zəif cəhətləri:\n" +
+  "- AES qədər geniş yayılmayıb.\n" +
+  "- Implementasiya daha mürəkkəbdir.\n" +
+  "- Bəzi köhnə cihazlarda dəstək yoxdur.\n\n" +
+  "Tətbiq sahələri:\n" +
+  "- TLS/SSL\n" +
+  "- VPN sistemləri\n" +
+  "- Disk və fayl şifrələməsi\n" +
+  "- Bank və korporativ təhlükəsizlik həlləri\n" +
+  "- Şəbəkə protokollarında məlumat mühafizəsi"
+)'>
+  <i class="bx bx-leaf"></i> Camellia
+</a>
+</li>
+      <li><a href="#" onclick="openRightSidebar(
+    'ECC (Elliptic Curve Cryptography)',
+    'ECC — Elliptik Əyrilər üzərində qurulan müasir açar mübadiləsi və rəqəmsal imza alqoritmidir.\n\n' +
+    'Nədir?\n' +
+    'ECC, böyük ədədlər üzərində deyil, elliptik əyrilərin riyazi xassələrinə əsaslanan təhlükəsizlik modelidir. \n' +
+    'Eyni təhlükəsizlik səviyyəsini RSA-dan daha kiçik açarla təmin edir.\n\n' +
+    'Niyə güclüdür?\n' +
+    '- Nöqtə çoxluğunda tərs əməliyyatın tapılması çox çətindir.\n' +
+    '- Elliptic Curve Discrete Logarithm Problem (ECDLP) hələ heç bir real hücumla həll olunmayıb.\n' +
+    '- RSA 3072-bit güvən səviyyəsini ECC 256-bit ilə təmin edir.\n\n' +
+    'Harada istifadə olunur?\n' +
+    '- TLS/HTTPS (məs: ECDHE)\n' +
+    '- Kriptovalyutalar (Bitcoin, Ethereum – SECP256k1)\n' +
+    '- Mobil cihazlar\n' +
+    '- Rəqəmsal imza (ECDSA)\n' +
+    '- Sertifikatlar\n\n' +
+    'Üstünlüklər:\n' +
+    '- Kiçik açar ölçüləri, yüksək performans\n' +
+    '- Mobil və IoT cihazlarda sürətli işləmə\n' +
+    '- Güclü təhlükəsizlik (ECDLP hələ qırıla bilmir)\n' +
+    '- Daha az hesablama gücü tələb edir\n\n' +
+    'Dezavantajlar:\n' +
+    '- Riyazi cəhətdən RSA-dan daha mürəkkəbdir\n' +
+    '- Standartlaşdırılmış əyrilərin bəzilərinə etimad mübahisəlidir\n\n' +
+    'Məşhur ECC əyriləri:\n' +
+    '- SECP256k1 (Bitcoin)\n' +
+    '- P-256 (NIST)\n' +
+    '- Curve25519 (ən təhlükəsizlərdən biri)\n' +
+    '- Ed25519 (rəqəmsal imza üçün)\n\n' +
+    'Nəticə:\n' +
+    'ECC — modern kriptoqrafiyanın ən güclü alqoritmlərindən biridir. \n' +
+    'RSA ilə eyni təhlükəsizliyi çox kiçik açarlarla təmin etdiyi üçün həm sürətli, həm də çox etibarlıdır.'
+);">
+    <i class='bx bx-coin-stack'></i> ECC
+</a>
+</li>
+      <li><a href="#" onclick="openRightSidebar(
+    'Diffie-Hellman Açar Mübadiləsi',
+    'Diffie–Hellman — iki tərəfin (məsələn, A və B) açıq şəbəkə üzərindən gizli açarı təhlükəsiz şəkildə paylaşmasını təmin edən açar mübadiləsi protokoludur.\n\n' +
+    'Nə edir?\n' +
+    'Diffie–Hellman məlumatı şifrələmir — yalnız sonradan şifrələmə üçün istifadə olunacaq ortaq gizli açar yaradır.\n\n' +
+    'İş prinsipi (sadə izah):\n' +
+    '1. Tərəflər 2 böyük ədədi razılaşdırır: əsas g və modul p.\n' +
+    '2. A öz gizli ədədini seçir → a\n' +
+    '3. B öz gizli ədədini seçir → b\n' +
+    '4. A qarşı tərəfə g^a mod p göndərir\n' +
+    '5. B qarşı tərəfə g^b mod p göndərir\n' +
+    '6. Hər iki tərəf ortaq açarı hesablayır:\n' +
+    '   - A: (g^b)^a mod p\n' +
+    '   - B: (g^a)^b mod p\n' +
+    'Bu iki nəticə eyni açar olur.\n\n' +
+    'Niyə güclüdür?\n' +
+    '- Sistem Discrete Logarithm Problem-ə əsaslanır\n' +
+    '- g^x mod p tərsini tapmaq praktik olaraq mümkün deyil\n' +
+    '- Əsas alqoritm 1976-dan bəri qırılmayıb\n\n' +
+    'Harada istifadə olunur?\n' +
+    '- TLS/HTTPS\n' +
+    '- VPN protokolları (IKE, IPsec)\n' +
+    '- SSH\n' +
+    '- Messencerlər (WhatsApp, Signal – ECDH variantı)\n\n' +
+    'Üstünlüklər:\n' +
+    '- Güclü təhlükəsizlik\n' +
+    '- Ortaq açar heç vaxt şəbəkədən keçmir\n' +
+    '- Asimmetrik şifrələməyə ehtiyac olmadan açar paylaşmaq imkanı\n\n' +
+    'Nöqsanlar:\n' +
+    '- Kimlik təsdiqi yoxdur (MITM hücumu mümkündür)\n' +
+    '- Orijinal DH yavaşdır — onu ECC variantı (ECDH) əvəz edir\n\n' +
+    'Modern variantlar:\n' +
+    '- ECDH – Elliptic Curve Diffie–Hellman (daha sürətli, daha güclü)\n' +
+    '- X3DH – Signal protokolunda istifadə olunur\n' +
+    '- FDH / HDH – təkmilləşdirilmiş versiyalar\n\n' +
+    'Nəticə:\n' +
+    'Diffie–Hellman — kriptoqrafiyanın əsasını təşkil edən, milyonlarla sistemdə istifadə olunan etibarlı açar mübadiləsi mexanizmidir.'
+);">
+    <i class='bx bx-link'></i> Diffie-Hellman
+</a>
+</li>
+      <li><a href="#" onclick="openRightSidebar(
+    'SHA-256',
+    'SHA-256 — Secure Hash Algorithm 2 (SHA-2) ailəsinin 256-bitlik hash funksiyasıdır.\n' +
+    'Hash funksiyaları məlumatı sabit uzunluqlu rəqəmsal barmaq izi şəklinə çevirir və geri qaytarmaq mümkün deyil.\n\n' +
+    'Əsas xüsusiyyətləri:\n' +
+    '- Hash uzunluğu: 256 bit (32 bayt)\n' +
+    '- Simmetrik şifrələmə deyil, yalnız məlumatın xülasəsi\n' +
+    '- Deterministik: eyni giriş → eyni çıxış\n' +
+    '- Hər kiçik dəyişiklik → tamamilə fərqli hash (Avalanche effekti)\n' +
+    '- Collision (iki girişin eyni hash verməsi) ehtimalı çox aşağıdır\n\n' +
+    'İş prinsipi (sadələşdirilmiş izah):\n' +
+    '1. Məlumat bloklara bölünür (512-bit bloklar)\n' +
+    '2. Padding əlavə olunur ki, blok ölçüsü standartlaşsın\n' +
+    '3. Başlanğıc vəziyyət (initial hash values) təyin olunur\n' +
+    '4. Hər blok 64 tur SHA əməliyyatı ilə qarışdırılır\n' +
+    '5. 256-bitlik hash çıxışı alınır\n\n' +
+    'Xüsusiyyətləri:\n' +
+    '- Sürətli və proqramlaşdırmaya uyğundur\n' +
+    '- Preimage attack və second preimage attack praktiki olaraq mümkün deyil\n' +
+    '- Kiçik dəyişikliklərdə hash tamamilə dəyişir\n' +
+    '- Parol saxlama üçün salt ilə birləşdirilə bilər\n\n' +
+    'Nümunə:\n' +
+    '- Mətn: HELLO\n' +
+    '- SHA-256: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969\n\n' +
+    'Tətbiq sahələri:\n' +
+    '- Blockchain (Bitcoin, Ethereum)\n' +
+    '- Digital signatures (rəqəmsal imza)\n' +
+    '- TLS/HTTPS sertifikatları\n' +
+    '- Parol və fayl bütövlüyünün yoxlanması\n' +
+    '- Kriptoqrafik protokollar\n\n' +
+    'Əlavə məlumat:\n' +
+    '- SHA-256 hash funksiyasıdır, şifrələmə deyil\n' +
+    '- İnsan tərəfindən deşifrə etmək və ya geri çevirmək mümkün deyil\n' +
+    '- SHA-2 ailəsi: SHA-224, SHA-256, SHA-384, SHA-512\n' +
+    '- SHA-256 hazırda çox geniş istifadə olunur və çox təhlükəsizdir'
+);">
+    <i class="bx bx-hash"></i> SHA-256
+</a>
+</li>
+      <li><a href="#" onclick="openRightSidebar(
+    'MD5',
+    'MD5 — Message Digest 5 hash funksiyasıdır və 128-bitlik hash çıxışı verir. ' +
+    '1970-ci illərin sonunda Ronald Rivest tərəfindən hazırlanmışdır.\n\n' +
+    'Əsas xüsusiyyətləri:\n' +
+    '- Hash uzunluğu: 128 bit (16 bayt)\n' +
+    '- Deterministik: eyni giriş → eyni çıxış\n' +
+    '- Kiçik dəyişikliklərdə hash tamamilə dəyişir (Avalanche effekti)\n' +
+    '- Şifrələmə deyil — yalnız məlumatın xülasəsi\n\n' +
+    'İş prinsipi (sadələşdirilmiş):\n' +
+    '1. Məlumat bloklara bölünür (512-bit bloklar)\n' +
+    '2. Padding əlavə olunur ki, blok ölçüsü 512 bitə tam uyğun olsun\n' +
+    '3. Başlanğıc dəyərlər (IV) təyin edilir\n' +
+    '4. Hər blok 64 tur əsas funksiyalar və bit əməliyyatları ilə qarışdırılır\n' +
+    '5. Nəticədə 128-bitlik hash alınır\n\n' +
+    'Xüsusiyyətləri:\n' +
+    '- Sürətli və proqramlaşdırmaya uyğundur\n' +
+    '- Preimage attack praktik olaraq mümkün deyil, amma collision (iki fərqli giriş → eyni hash) artıq tapılıb\n' +
+    '- Parol saxlama üçün təkbaşına istifadə təhlükəlidir (salt ilə birləşdirilməlidir)\n' +
+    '- Kiçik dəyişiklik hash-i tam dəyişdirir\n\n' +
+    'Nümunə:\n' +
+    '- Mətn: HELLO\n' +
+    '- MD5 hash: 8b1a9953c4611296a827abf8c47804d7\n\n' +
+    'Tətbiq sahələri (tarixi və hal-hazırda):\n' +
+    '- Fayl bütövlüyünü yoxlamaq (checksum)\n' +
+    '- Rəqəmsal imza\n' +
+    '- Köhnə sistemlərdə parol saxlama\n' +
+    '- Modern təhlükəsizlik üçün tövsiyə olunmur (collision riski səbəbindən)\n' +
+    '- Müasir sistemlərdə SHA-2 və SHA-3 ilə əvəz olunur\n\n' +
+    'Əlavə məlumat:\n' +
+    '- MD5 hash funksiyasıdır, şifrələmə deyil\n' +
+    '- İnsan tərəfindən deşifrə edilə bilməz\n' +
+    '- Salt ilə istifadə olunmalıdır ki, parol qorunsun\n' +
+    '- Kriptoqrafiyada artıq tövsiyə edilməyən alqoritmdir, amma hələ də legacy sistemlərdə rast gəlinir'
+);">
+    <i class="bx bx-fingerprint"></i> MD5
+</a>
+</li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+        <div class="section-title">Təhlükəsizlik Protokolları</div>
+        <ul class="nav-links">
+            <li>
+  <li>
+ <a href="#" onclick='openRightSidebar(
+    "SSL/TLS",
+    "SSL (Secure Sockets Layer) və TLS (Transport Layer Security) internet üzərindən məlumatların təhlükəsiz ötürülməsi üçün istifadə olunan kriptoqrafik protokollardır.\n\n" +
+    "TLS, SSL-in modern və təhlükəsiz əvəzidir. Bugünkü sistemlərdə faktiki olaraq yalnız TLS işlədilir.\n\n" +
+    "Əsas məqsədlər:\n" +
+    "- Şifrələmə (məlumatın gizliliyi)\n" +
+    "- Bütövlük (məlumatın dəyişdirilmədiyini yoxlama)\n" +
+    "- İdentifikasiya (server və ya müştərinin təsdiqi)\n\n" +
+    "Tarixi:\n" +
+    "- SSL 1.0 – yayımlanmayıb\n" +
+    "- SSL 2.0 (1995) – zəif\n" +
+    "- SSL 3.0 (1996) – TLS üçün baza\n" +
+    "- TLS 1.0 (1999) – SSL 3.0 təkmilləşdirilmiş versiyası\n" +
+    "- TLS 1.1 (2006)\n" +
+    "- TLS 1.2 (2008) – geniş istifadə edilir\n" +
+    "- TLS 1.3 (2018) – ən modern və təhlükəsiz versiya\n\n" +
+    "İş prinsipi (Handshake və Şifrələmə) — qısa izah (TLS 1.2 misal):\n" +
+    "1) ClientHello — Müştəri TLS versiyası, dəstəklənən şifrlər və random (nonce) göndərir.\n" +
+    "2) ServerHello — Server TLS versiyası, seçilmiş şifrləmə alqoritmi, random və sertifikat göndərir.\n" +
+    "3) Sertifikat doğrulaması — Müştəri CA imzasını, domen adını və sertifikat müddətini yoxlayır.\n" +
+    "4) Pre-Master Secret mübadiləsi — (TLS 1.2: RSA və ya DHE/ECDHE) (TLS 1.3: yalnız (EC)DHE).\n" +
+    "DHE — Diffie-Hellman Ephemeral\n" +
+    "ECDHE — Elliptic Curve Diffie-Hellman Ephemeral\n" +
+    "Ephemeral = Müvəqqəti, bir sessiyalıq, sonra silinən açardır.\n" +
+    "5) Sessiya açarının yaradılması — Pre-master secret + random → simmetrik açar.\n" +
+    "6) Finished mesajları — Handshake tamamlanır və şifrələmə başlayır.\n\n" +
+    "Kriptoqrafik komponentlər:\n" +
+    "- Simmetrik şifrələmə: AES, ChaCha20\n" +
+    "- Asimmetrik alqoritmlər: RSA, ECDSA (sertifikat və açar mübadiləsi üçün)\n" +
+    "- HMAC / MAC: SHA-256, SHA-3 (bütövlük təminatı)\n" +
+    "- Sertifikatlar: X.509 formatı\n\n" +
+    "SSL/TLS protokol qatları:\n" +
+    "- Handshake Layer – əlaqə qurma və açar mübadiləsi\n" +
+    "- Record Layer – məlumatların şifrələnməsi və bütövlüyün qorunması\n" +
+    "- Alert Layer – xəta və xəbərdarlıq mesajları\n\n" +
+    "İstifadə sahələri:\n" +
+    "- HTTPS (veb serverlər və brauzerlər)\n" +
+    "- E-mail protokolları: SMTP, IMAP, POP3\n" +
+    "- VPN texnologiyaları\n" +
+    "- VoIP və messencerlər (WhatsApp, Signal)\n" +
+    "- API-lər və IoT cihazlar\n\n" +
+    "TLS 1.3 üstünlükləri:\n" +
+    "- Daha sürətli handshake (0-RTT, 1-RTT)\n" +
+    "- Köhnə və zəif şifrləmə alqoritmlərinin çıxarılması\n" +
+    "- Forward Secrecy standart olaraq\n" +
+    "- Daha sadə və təhlükəsiz protokol strukturu\n\n" +
+    "SSL/TLS təhlükəsizlik məsələləri:\n" +
+    "- SSL 2.0 və SSL 3.0 tamamilə istifadə olunmamalıdır\n" +
+    "- Zəif konfiqurasiyalar təhlükəyə səbəb ola bilər: zəif şifrlər (RC4, DES, 3DES)\n" +
+    "- Sertifikat doğrulamasının səhv aparılması ciddi risk yaradır\n" +
+    "- Tarixdə POODLE və Heartbleed kimi geniş yayılmış kiberhücumlar mövcud olmuşdur"
+)'><i class="bx bx-shield"></i> SSL/TLS</a>
+</li>
+<li>
+  <a href="#" onclick='openRightSidebar(
+    "HTTPS",
+    "1. HTTPS (HyperText Transfer Protocol Secure) nədir?\n\n" +
+    "HTTPS, HTTP-nin təhlükəsiz variantıdır və veb brauzer ilə server arasında məlumatların şifrələnmiş ötürülməsini təmin edir.\n\n" +
+    "- URL “https://” ilə başlayır.\n" +
+    "- HTTP protokolunu saxlayır, amma üzərinə TLS/SSL qatını əlavə edir.\n" +
+    "- İşləmə səviyyəsi: Transport Layer\n" +
+    "- Sürət: HTTP-dən bir az yavaşdır, amma məlumatın təhlükəsizliyini təmin edir.\n\n" +
+    "2. HTTPS-in işləmə prinsipi:\n" +
+    "- Brauzer serverlə TLS handshake başlatır.\n" +
+    "- Server sertifikatı brauzer tərəfindən yoxlanılır (X.509 sertifikatı).\n" +
+    "- Public/private açarlarla simmetrik sessiya açarı yaradılır.\n" +
+    "- Bütün HTTP məlumatları bundan sonra şifrələnmiş formada ötürülür.\n" +
+    "- Məsələn:\n" +
+    "  Plain text: \"This is a string of text that is completely readable\"\n" +
+    "  Şifrələnmiş: \"ITM0IRyiEhVpa6VnKyExMiEgNveroyWBPlgGyfkflYjDaaFf/Kn3bo3OfghBPDWo6AfSHlNtL8N7ITEwIXc1gU5X73xMsJormzzXlwOyrCs+9XCPk63Y+z0=\"\n\n" +
+    "3. HTTPS niyə vacibdir?\n" +
+    "- Məlumatın gizliliyini və bütövlüyünü qoruyur.\n" +
+    "- Public Wi-Fi və ya hacker müdaxilələrində məlumatı oxunmaz edir.\n" +
+    "- Xüsusilə login, ödəniş və şəxsi məlumat tələb edən saytlar üçün vacibdir.\n" +
+    "- HTTPS olmayan saytlar brauzer tərəfindən “Not Secure” kimi işarələnir.\n" +
+    "- Məlumatlar paketlərdə ötürülür, amma HTTPS onları şifrələyir və dəyişdirilməsini qarşısını alır.\n\n" +
+    "4. HTTPS-də şifrələmə və açarlar:\n" +
+    "- Asimmetrik açarlar: Public/private açarlar TLS handshake-də sessiya açarı mübadiləsi üçün istifadə olunur.\n" +
+    "- Simmetrik açarlar: Sessiya açarı ilə bütün HTTP məlumatları şifrələnir.\n" +
+    "- Algoritmlər: RSA, ECDHE, AES, ChaCha20-Poly1305\n" +
+    "- Məlumat bütövlüyü üçün SHA-256 kimi hash alqoritmləri istifadə olunur.\n" +
+    "- Ephemeral açarlar: Hər sessiya üçün unikal açar yaradılır → Forward Secrecy təmin olunur (keçmiş trafik açıla bilmir).\n\n" +
+    "5. HTTPS vs HTTP — əsas fərqlər:\n" +
+    "- URL: HTTP saytlar “http://”, HTTPS saytlar isə “https://” ilə başlayır.\n" +
+    "- Təhlükəsizlik: HTTP şifrələnməmişdir; HTTPS TLS/SSL ilə şifrələnmiş və qorunmuş məlumat ötürür.\n" +
+    "- İşləmə səviyyəsi: HTTP Application Layer, HTTPS Transport Layer.\n" +
+    "- Sürət: HTTP bir az sürətlidir, HTTPS bir qədər yavaşdır amma təhlükəsizlik təmin edir.\n" +
+    "- Məlumat bütövlüyü: HTTP-də yox, HTTPS-də təmin olunur.\n" +
+    "- Identifikasiya: HTTP serveri doğrulamaz, HTTPS isə sertifikat vasitəsilə serveri identifikasiya edir.\n\n" +
+    "6. Tarixi zəifliklər və təhlükəsizlik:\n" +
+    "- Köhnə SSL versiyaları təhlükəlidir (SSL 2.0, SSL 3.0).\n" +
+    "- Tarixi hücumlar: POODLE (SSL3.0), Heartbleed (OpenSSL bug)\n" +
+    "- Zəif konfiqurasiya və köhnə şifrələr (RC4, DES, 3DES) risk yarada bilər.\n\n" +
+    "7. Qısa yekun:\n" +
+    "- HTTPS = HTTP + TLS/SSL şifrələmə + sertifikatlı identifikasiya + simmetrik/asimmetrik açarlar + Forward Secrecy + məlumat bütövlüyü.\n" +
+    "- Bu, müasir internetin standart təhlükəsiz veb protokoludur."
+)'><i class="bx bx-lock"></i> HTTPS</a>
+</li>
+            <li>
+ <a href="#" onclick='openRightSidebar(
+    "VPN",
+    "1. VPN (Virtual Private Network) nədir?\n\n" +
+    "VPN — Virtual Private Network, internet trafikinizi şifrələyərək cihazınız və internet arasında təhlükəsiz tunel yaradan texnologiyadır.\n" +
+    "VPN sizin IP ünvanınızı gizlədir, məlumatları şifrələyir, təhlükəsizliyi artırır və geo-məhdudiyyətləri aşmağa imkan verir.\n\n" +
+    "Əsas funksiyalar:\n" +
+    "- Məxfilik: Brauzer fəaliyyətiniz gizli qalır.\n" +
+    "- Təhlükəsizlik: Xüsusilə public Wi-Fi şəbəkələrdə məlumatınızı qoruyur.\n" +
+    "- Geo-məhdudiyyətlərin aşılması: Bloqlanmış sayt və xidmətlərə giriş.\n" +
+    "- ISP throttling qarşısı: İnternet sürətinin süni yavaşlamasının qarşısını alır.\n" +
+    "- Uzaq iş və resurslara giriş: Şirkət şəbəkələrinə təhlükəsiz giriş imkanı.\n\n" +
+    "2. VPN necə işləyir?\n" +
+    "- Qoşulma: VPN aktivləşdirildikdə, cihazınız provayderin serverinə qoşulur.\n" +
+    "- Şifrələmə: Trafik şifrələnir, müdaxilə mümkün olmur.\n" +
+    "- Trafikin yönləndirilməsi: Trafik VPN serveri vasitəsilə keçir, IP ünvanınız maskalanır.\n" +
+    "- Deşifrə: Server məlumatı açır və təyinat yerinə göndərir; cavab yenə şifrələnmiş tunel vasitəsilə geri dönür.\n" +
+    "- Nəticə: Trafik gizli qalır, lokasiyanız maskalanır, məlumatlar təhlükəsiz ötürülür.\n\n" +
+    "3. VPN növləri:\n" +
+    "3.1 Remote Access VPN — Fərdi istifadəçilər üçün: uzaqdan şirkət şəbəkəsinə qoşulmaq.\n" +
+    "3.2 Site-to-Site VPN — İki şəbəkəni internet üzərindən birləşdirir.\n" +
+    "3.3 Mobile VPN — Mobil cihazlar üçün: şəbəkə dəyişsə belə stabil bağlantı.\n" +
+    "3.4 SSL VPN — Brauzer əsaslı: HTML5 brauzer vasitəsilə şirkət resurslarına təhlükəsiz giriş.\n" +
+    "3.5 MPLS VPN — Böyük müəssisələr üçün: yüksək sürətli, skalabil, prioritetli trafik.\n" +
+    "3.6 PPTP / L2TP/IPsec / OpenVPN / IKEv2/IPsec — müxtəlif səviyyəli təhlükəsizlik və performans.\n\n" +
+    "4. VPN-in üstünlükləri:\n" +
+    "- Məxfilik və anonimlik: IP gizlənir, izlənmək çətinləşir.\n" +
+    "- Təhlükəsizlik: Şifrələnmiş trafikin qorunması.\n" +
+    "- Geo-məhdudiyyətlərin aşılması: Video, sosial media və digər regional məhdudiyyətli məzmunlara giriş.\n" +
+    "- Uzaq iş və məlumat transferi: Şirkət resurslarına təhlükəsiz giriş.\n" +
+    "- ISP müdaxiləsinin qarşısını alır: Sürət süni azaldıla bilmir.\n\n" +
+    "5. VPN istifadə zamanı diqqət edilməli məqamlar:\n" +
+    "- Sürət azalması: Şifrələmə və server routinq səbəbindən.\n" +
+    "- Provayder seçimi: Bəzi VPN-lər məlumatları loglaya bilər.\n" +
+    "- Bloklanma: Bəzi saytlar/VPN-ləri bloklaya bilər.\n" +
+    "- Təhlükəsizlik tam deyil: VPN kompüterinizdə virusları dayandırmır, əlavə antivirus tövsiyə olunur.\n\n" +
+    "6. VPN və təhlükəsizlik:\n" +
+    "- Şifrələmə: Trafik AES, ChaCha20 kimi güclü alqoritmlərlə qorunur.\n" +
+    "- Forward Secrecy: Hər sessiya üçün unikal açar. Keçmiş trafik açıla bilmir.\n" +
+    "- Kill Switch: VPN bağlantısı kəsiləndə məlumat sızmasının qarşısını alır.\n" +
+    "- İki faktorlu autentifikasiya: Təhlükəsiz giriş təmin edir.\n\n" +
+    "7. Tarixi və inkişaf:\n" +
+    "- 1960-larda ABŞ Müdafiə Nazirliyi internet şifrələməsi üzərində işləyirdi.\n" +
+    "- ARPANET və TCP/IP protokolları ilə ilkin VPN texnologiyaları inkişaf etdi.\n" +
+    "- 1990-cı illərdə swIPe, IPSec, PPTP kimi protokollar yaranıb.\n" +
+    "- 2000-ci illərdə şirkətlər üçün VPN-lər geniş yayıldı.\n" +
+    "- 2010-cu illərdən sonra fərdi istifadəçilər üçün də populyar oldu."
+)'><i class="bx bx-network-chart"></i> VPN</a>
+</li>
+<li>
+  <a href="#" onclick='openRightSidebar("IPSec",
+    "IPSec (Internet Protocol Security)\n\n" +
+    "IPSec — şəbəkə qatında (network layer) IP trafikin qorunması üçün istifadə olunan protokollar toplusudur. Əsas məqsəd: IP protokolu özündə heç bir təhlükəsizlik xüsusiyyəti daşımadığı üçün trafiki qorumaq.\n\n" +
+    "1. IPSec nədir?\n" +
+    "- IPSec, cihazlar arasında məlumatları şifrələyir, autentifikasiya edir və bütövlüyünü təmin edir.\n" +
+    "- Şifrələmə: Trafik yalnız göndərici və alıcı tərəfindən oxuna bilər.\n" +
+    "- Bütövlük (Integrity): Paketlərdə dəyişiklik olub olmadığını yoxlayır.\n" +
+    "- Autentifikasiya: Həqiqətən istədiyimiz cihazla əlaqə qurduğumuzdan əmin oluruq.\n" +
+    "- Anti-replay: Eyni paketlərin yenidən göndərilməsinin qarşısını alır.\n\n" +
+    "2. IPSec istifadəsi:\n" +
+    "- İki router arasında site-to-site VPN yaratmaq (LAN-ları birləşdirmək).\n" +
+    "- Firewalldan hosta remote access VPN təmin etmək.\n" +
+    "- İki Linux server arasında zəif protokolları (məs. telnet) qorumaq.\n" +
+    "- Routerlərdə və firewall-larda trafiki qorumaq.\n" +
+    "- Replay (man-in-the-middle) hücumlarına qarşı qorunma.\n\n" +
+    "3. IPSec protokolları:\n" +
+    "3.1 AH (Authentication Header) — Paketlərin authentikliyini və bütövlüyünü təmin edir. Paket şifrələnmir, yalnız dəyişdirilməyə qarşı qorunur. Paket alındıqda hash dəyərləri müqayisə olunur.\n" +
+    "3.2 ESP (Encapsulating Security Payload) — Paketlərin şifrələnməsi və autentifikasiyası üçün istifadə olunur. Şifrələmə həm payload, həm də bütün paket üçün mümkündür (mode-dan asılı olaraq).\n" +
+    "3.3 IKE (Internet Key Exchange) — IPSec tunellərinin yaradılması üçün təhlükəsiz açar mübadiləsi və SA (Security Association) qurur. İki versiyası var: IKEv1 və IKEv2. IKEv2 daha az bantgenişliyi istifadə edir, NAT traversal və EAP autentifikasiyasını dəstəkləyir.\n\n" +
+    "4. IPSec Modları:\n" +
+    "Tunnel Mode — Public şəbəkələrdə məlumatların maksimum qorunması, IP paketinin başlıq və payload hissəsi şifrələnir.\n" +
+    "Transport Mode — Daxili şəbəkələrdə host-to-host, yalnız payload şifrələnir, başlıq qalır.\n\n" +
+    "5. IPSec şifrələməsi:\n" +
+    "- AES, 3DES, Blowfish, DES-CBC, ChaCha kimi alqoritmlərdən istifadə olunur.\n" +
+    "- Simmetrik şifrələmə: Eyni açar ilə şifrələmə və deşifrə.\n" +
+    "- Asimmetrik şifrələmə: Public key şifrələmə, private key deşifrə.\n" +
+    "- Adətən IPSec asimmetriklə tuneli qurur, sonra sürət üçün simmetriklə məlumat ötürür.\n\n" +
+    "6. IPSec tunel qurulması:\n" +
+    "6.1 Addımlar — İnisiasiya, IKE Phase 1 (ISAKMP tunnel), hashing, autentifikasiya, DH group, şifrələmə, lifetime parametrləri, Main/Aggressive mode, IKE Phase 2, Data Transfer, Termination.\n\n" +
+    "7. IPSec VPN:\n" +
+    "- VPN — istifadəçilərə internetdə anonim və təhlükəsiz gəzmək imkanı verir.\n" +
+    "- IPSec VPN: IPSec protokolundan istifadə edərək şifrəli tunellər yaradır, end-to-end şifrələmə təmin edir.\n" +
+    "- SSL VPN: Browser əsaslı, SSL protokolundan istifadə edir, yalnız tətbiq qatında şifrələmə edir.\n" +
+    "- Fərqi: IPSec → şəbəkə və transport qatında işləyir. SSL → tətbiq qatında işləyir.\n" +
+    "- IPSec VPN üçün proqram quraşdırmaq lazımdır, SSL VPN brauzer ilə işləyir.\n" +
+    "- Tunnel mode → site-to-site VPN.\n" +
+    "- Transport mode → host-to-host və zəif protokollar üçün.\n" +
+    "- ESP → şifrələmə + autentifikasiya (ən çox istifadə olunan).\n" +
+    "- AH → yalnız autentifikasiya və bütövlük."
+)'><i class="bx bx-shield-alt"></i> IPSec</a>
+</li>
+ <li>
+  <a href="#" onclick='openRightSidebar("Kerberos",
+    "1. Kerberos nədir?\n\n" +
+    "Kerberos, şəbəkədə istifadəçilərin və xidmətlərin kimliyini doğrulayan mərkəzləşdirilmiş autentifikasiya protokoludur.\n\n" +
+    "Əsas prinsip: etibarlı üçüncü tərəf (Key Distribution Center – KDC) istifadə olunur. KDC istifadəçilərin və xidmətlərin kimliyini təsdiqləyir və xidmətlərə giriş üçün şifrəli biletlər (tickets) təmin edir.\n\n" +
+    "2. Əsas komponentlər\n\n" +
+    "1. Authentication Server (AS)\n" +
+    "İlk autentifikasiyanı həyata keçirir.\n" +
+    "İstifadəçiyə TGT (Ticket-Granting Ticket) verir.\n\n" +
+    "2. Database\n" +
+    "İstifadəçi və xidmətlərin giriş hüquqlarını saxlayır.\n" +
+    "AS tərəfindən yoxlanılır.\n\n" +
+    "3. Ticket-Granting Server (TGS)\n" +
+    "İstifadəçiyə xidmət biletləri (service tickets) verir.\n" +
+    "Yalnız TGT-ni tanıyır və onun doğruluğunu yoxlayır.\n\n" +
+    "4. Principals\n" +
+    "Şəbəkədə hər istifadəçi və hər xidmət principal adlanır.\n\n" +
+    "5. Key Distribution Center (KDC)\n" +
+    "Mərkəzləşdirilmiş server, həm AS, həm TGS rolunu oynayır.\n" +
+    "krbtgt hesabının sirri bütün təhlükəsizliyin əsasıdır.\n\n" +
+    "3. Kerberos biletləri\n\n" +
+    "1. Ticket-Granting Ticket (TGT)\n" +
+    "İstifadəçinin ilk girişində AS tərəfindən verilir.\n" +
+    "Məqsəd: bir dəfə istifadəçini doğrulamaq və sonra digər xidmətlər üçün service ticket almağa imkan vermək.\n" +
+    "Yalnız TGS tərəfindən oxuna bilir.\n\n" +
+    "2. Service Ticket (ST)\n" +
+    "TGT istifadə edilərək TGS-dən alınır.\n" +
+    "Xidmətə giriş üçün təqdim olunur.\n\n" +
+    "İş prinsipi:\n" +
+    "İstifadəçi domain-ə daxil olur → AS ona TGT verir.\n" +
+    "İstifadəçi TGT-ni saxlayır.\n" +
+    "Hər hansı xidmətə giriş istəyəndə, TGT-ni TGS-ə təqdim edir → TGS həmin xidmət üçün service ticket verir.\n" +
+    "Service ticket serverə təqdim olunur → xidmətə giriş təmin edilir.\n\n" +
+    "4. Kerberos işləmə prinsipi (Addım-addım)\n\n" +
+    "İstifadəçi hosta daxil olur və xidmət üçün TGS tələb edir.\n" +
+    "AS istifadəçinin hüquqlarını database vasitəsilə yoxlayır və TGT + sessiya açarı verir (istifadəçi şifrəsi ilə şifrələnir).\n" +
+    "İstifadəçi TGT-ni deşifrə edir və TGS-ə göndərir. TGT-də autentifikatorlar olur (istifadəçi adı, şəbəkə ünvanları).\n" +
+    "TGS TGT-ni yoxlayır, autentifikatorları təsdiqləyir və tələb olunan xidmət üçün service ticket yaradır.\n" +
+    "İstifadəçi service ticket + autentifikatoru serverə göndərir.\n" +
+    "Server TGT və autentifikatorları yoxlayır → xidmətə giriş icazəsi verir.\n\n" +
+    "5. Kerberos üstünlükləri\n\n" +
+    "Single Sign-On (SSO): Bir dəfə giriş → bütün icazəli xidmətlərə giriş.\n" +
+    "Mutual Authentication: Müştəri və server bir-birini doğrulayır.\n" +
+    "Authorization: Xidmət biletləri istifadəçinin yalnız icazə verilmiş resurslara girişini təmin edir.\n" +
+    "Network Security: Mərkəzləşdirilmiş server şəbəkə resurslarını qoruyur.\n\n" +
+    "6. Kerberos təhlükəsizliyi\n\n" +
+    "Müasir şifrələmə alqoritmləri (AES256) və güclü parol siyasəti ilə yüksək təhlükəsizlik təmin olunur.\n" +
+    "Limitasiyalar / risklər:\n" +
+    "- Hər şəbəkə xidməti Kerberos üçün ayrıca uyğunlaşdırılmalıdır.\n" +
+    "- Zaman paylaşımı mühitlərində zəif işləyə bilər.\n" +
+    "- Həmişə aktiv KDC tələb olunur.\n" +
+    "- Bütün parollar tək açarla şifrələnir → mərkəzi risk.\n" +
+    "- İş stansiyalarının təhlükəsiz olması tələb olunur.\n" +
+    "- Cascading trust riskləri → KDC kompromit olunsa, bütün şəbəkə təhlükədə.\n" +
+    "- Time synchronization vacibdir (paket timestamp yoxlamaları üçün).\n" +
+    "- Replay hücumlarına qarşı qorunma → sequencial nömrələr.\n\n" +
+    "7. Hash və şifrələmə\n\n" +
+    "RC4_HMAC (etype 23): NTLM-ə oxşar, zəif qorunma.\n" +
+    "AES256_CTS_HMAC_SHA1 (etype 18): Daha güclü, tövsiyə olunur.\n" +
+    "Kerberos şifrəli açarlar istifadə edir; parolu bilmək həmişə lazım deyil, açarlar kifayətdir.\n\n" +
+    "8. Service Principal Name (SPN)\n\n" +
+    "Hər xidmət KDC-yə SPN ilə qeyd olunur.\n" +
+    "Xidmətin düzgün autentifikasiyası və service ticket verilməsi üçün vacibdir.\n\n" +
+    "9. Kerberos tətbiqləri\n\n" +
+    "User Authentication: İstifadəçi yalnız bir dəfə daxil olur.\n" +
+    "Single Sign-On (SSO): Müxtəlif xidmətlərə əlavə parolsuz giriş.\n" +
+    "Mutual Authentication: Müştəri və server qarşılıqlı autentifikasiya.\n" +
+    "Authorization: İcazəli resurslara girişin idarə olunması.\n" +
+    "Network Security: Mərkəzləşdirilmiş server şəbəkəni qoruyur.\n\n" +
+    "10. Sadə proses\n" +
+    "İstifadəçi → AS (TGT alınır) → İstifadəçi TGS-ə TGT göndərir → TGS Service Ticket verir → İstifadəçi serverə Service Ticket təqdim edir → Server icazə verir."
+  )'><i class='bx bx-user-check'></i> Kerberos</a>
+</li>
+            <li>
+  <a href="#" onclick='openRightSidebar("RADIUS",
+    "1. RADIUS (Remote Authentication Dial-In User Service) nədir?\n\n" +
+    "RADIUS, client/server modeli üzərində işləyən AAA protokoludur (Authentication, Authorization, Accounting).\n" +
+    "Şəbəkəni icazəsiz girişdən qoruyur.\n" +
+    "Remote istifadəçilərə təhlükəsiz giriş təmin edir.\n" +
+    "UDP protokolu üzərində işləyir → yüksək real-time performans.\n" +
+    "Təkrar göndərmə və backup server ilə yüksək etibarlılıq təmin edir.\n\n" +
+    "2. Niyə RADIUS lazımdır?\n\n" +
+    "AAA sistemi istifadəçilərin şəbəkəyə girişini idarə edir:\n" +
+    "Authentication (Doğrulama): İstifadəçi kimdir?\n" +
+    "Authorization (İcazə): Hansı resurslara giriş icazəsi var?\n" +
+    "Accounting (Hesabat): Resurs istifadəsi qeyd olunur.\n" +
+    "RADIUS protokolu NAS (Network Access Server) ilə AAA server arasında məlumat mübadiləsini tənzimləyir.\n\n" +
+    "3. RADIUS komponentləri\n\n" +
+    "RADIUS Client:\n" +
+    "Adətən NAS üzərində işləyir.\n" +
+    "İstifadəçi məlumatlarını serverə göndərir.\n" +
+    "Server cavabına əsasən giriş icazəsini qəbul və ya rədd edir.\n\n" +
+    "RADIUS Server:\n" +
+    "Mərkəzi serverdir, istifadəçi autentifikasiyasını və giriş hüquqlarını saxlayır.\n" +
+    "Müxtəlif client-ləri idarə edə bilir.\n" +
+    "Saxladığı əsas məlumat bazaları:\n" +
+    "Users: İstifadəçi adı, parol, IP, protokollar\n" +
+    "Clients: RADIUS client məlumatları, paylaşılmış açarlar\n" +
+    "Dictionary: RADIUS atributları və dəyərləri\n\n" +
+    "4. Təhlükəsiz məlumat mübadiləsi\n\n" +
+    "Client və server paylaşılan açar (shared key) istifadə edir.\n" +
+    "RADIUS paketində 16-octet Authenticator sahəsi → MD5 ilə paket imzası.\n" +
+    "İstifadəçi parolları şifrələnmiş şəkildə göndərilir.\n\n" +
+    "5. RADIUS işləmə prinsipi (AAA)\n\n" +
+    "İstifadəçi şəbəkəyə qoşulur → NAS/RADIUS client-ə username və parol göndərir.\n" +
+    "RADIUS client Access-Request paketini serverə göndərir.\n" +
+    "Server istifadəçini yoxlayır:\n" +
+    "Doğru → Access-Accept → giriş icazəsi + icazə məlumatları\n" +
+    "Yanlış → Access-Reject → giriş rədd olunur\n" +
+    "Client istifadəçiyə nəticəni bildirir.\n" +
+    "Giriş qəbul olunubsa → Accounting-Request (Start) serverə göndərilir → istifadəçi hesablanır\n" +
+    "Real-time hesablama varsa → Accounting-Request (Interim-Update) periodik olaraq göndərilir\n" +
+    "İstifadəçi çıxış edəndə → Accounting-Request (Stop) göndərilir → hesablama dayandırılır\n\n" +
+    "6. Dynamic Authorization (CoA)\n\n" +
+    "RADIUS server mövcud istifadəçinin icazələrini dəyişdirə bilər.\n" +
+    "Paketlər: CoA-Request, CoA-ACK, CoA-NAK\n" +
+    "Məsələn, admin istifadəçini məhdudlaşdırmaq və ya əlavə hüquq vermək üçün CoA istifadə edir.\n\n" +
+    "7. Disconnect Message (DM)\n\n" +
+    "Administrator istifadəçini zorla offline etmək istəyirsə, Disconnect-Request göndərir.\n" +
+    "Client → istifadəçini offline qoyur, cavab olaraq Disconnect-ACK və ya Disconnect-NAK qaytarır.\n\n" +
+    "8. Etibarlılıq və yüklənmə balansı\n\n" +
+    "Backup server:\n" +
+    "Bir master və bir neçə backup server mövcuddur.\n" +
+    "Master server cavab verməzsə, backup server cavab verir.\n" +
+    "Load balancing:\n" +
+    "Birdən çox server varsa, trafiki paylaşdırır → daha sürətli cavab.\n" +
+    "Retransmission:\n" +
+    "UDP istifadə olunduğu üçün cavab alınmazsa → paket yenidən göndərilir.\n\n" +
+    "9. Sadə axın nümunəsi\n\n" +
+    "İstifadəçi → NAS/RADIUS Client → Access-Request → RADIUS Server\n" +
+    "Server → Access-Accept/Reject → Client → İstifadəçiyə nəticə\n" +
+    "Start Accounting → Resource Usage → Stop Accounting"
+  )'><i class="bx bx-user-pin"></i> RADIUS</a>
+</li>
+<li>
+  <a href="#" onclick='openRightSidebar("PGP (Pretty Good Privacy)",
+    "PGP (Pretty Good Privacy) — məlumatların məxfiliyini, bütövlüyünü və doğruluğunu təmin edən hibrid kriptoqrafik sistemdir. O, həm simmetrik, həm də asimmterik (public-key) şifrələmə metodlarını birləşdirir və əsasən elektron poçtların, faylların, mesajların qorunması üçün istifadə olunur.\n\n" +
+    "1991-ci ildə Phil Zimmermann tərəfindən yaradılıb və sonradan OpenPGP standartı formalaşaraq açıq-mənbə alternativləri (məsələn, GnuPG) meydana gəlib.\n\n" +
+    "1. PGP-də Kriptoqrafiya Üsulları\n\n" +
+    "Simmetrik Şifrələmə:\nEyni açar həm şifrələmə, həm də deşifrə üçün istifadə olunur.\nPGP-də simmetrik alqoritmlər:\n- AES\n- CAST-128\n- IDEA\n- 3DES\n\n" +
+    "Asimmetrik Şifrələmə:\nİki açar var:\n- Public Key — hamı ilə paylaşılır\n- Private Key — gizli saxlanılır\nPGP bu iki sistemi birləşdirir və hibrid şifrələmə yaradır.\n\n" +
+    "2. PGP-in Təklif Etdiyi Xidmətlər\n\n" +
+    "Authentication — göndərənin kimliyini təsdiqləyir\n" +
+    "Confidentiality — mesajı yalnız alıcı oxuya bilir\n" +
+    "Integrity — məlumat dəyişməyib\n" +
+    "Digital Signature — rəqəmsal imza\n" +
+    "Email Compatibility — email sistemləri ilə uyğunluq\n\n" +
+    "3. PGP-in İş Prinsipi (Hibrid Mexanizm)\n\n" +
+    "Göndərən:\n- Mesaj sıxılır\n- Random Session Key yaradılır\n- Mesaj session key ilə şifrələnir\n- Session key alıcının public key-i ilə şifrələnir\n- Şifrələnmiş məlumat göndərilir\n\n" +
+    "Alıcı:\n- Session key private key ilə açılır\n- Mesaj deşifrə olunur\n- Sıxılma açılır\n\n" +
+    "Niyə belə edilir? Çünki simmetrik şifrələmə sürətli, public-key isə təhlükəsizdir.\n\n" +
+    "4. PGP-də Digital Signature Prosesi\n\n" +
+    "Göndərən:\n- Mesajın hash-i çıxarılır (SHA-1/SHA-256)\n- Hash private key ilə şifrələnir → imza yaranır\n\n" +
+    "Qəbul edən:\n- İmza public key ilə açılır\n- Mesaj yenidən hash edilir\n- Hash-lar uyğun gəlirsə: kimlik + bütövlük təsdiqlənir\n\n" +
+    "5. Web of Trust (Etibar Şəbəkəsi)\n\n" +
+    "Mərkəzləşdirilmiş CA yoxdur.\nİstifadəçilər bir-birinin açarlarını imzalayır.\nEtibar zənciri qurulur.\nPGP-i mərkəzsiz və demokratik edir.\n\n" +
+    "6. PGP Açarları\n\n" +
+    "Primary Key — əsas imza və şəxsiyyət təsdiqi\n" +
+    "Subkey-lər — şifrələmə, autentifikasiya, gündəlik istifadə\n\n" +
+    "7. Revocation Certificate\n\n" +
+    "Private key itəndə açarı etibarsız etmək üçün istifadə olunur.\nPGP açarı yaradılan anda revocation certificate də yaradılmalıdır.\n\n" +
+    "8. Keyserver-lər\n\n" +
+    "PGP açarları yayımlanır:\n- SKS serverləri\n- Hagrid (ProtonMail)\n- WKD — modern sistem\n" +
+    "Açar silinmir, yalnız revoked edilir.\n\n" +
+    "9. Hardware-Based PGP\n\n" +
+    "YubiKey, NitroKey, SmartCard\nÜstünlüklər:\n- Private key cihazdan çıxmır\n- Malware ilə oğurlamaq olmur\n- 2FA + PGP\n\n" +
+    "10. PGP-in Zəiflikləri\n\n" +
+    "Metadata sızması\nEFAIL hücumu\nPrivate key oğurlanması\nSaxta açar yükləməsi\nÇətin istifadə\n\n" +
+    "11. Real Tətbiqlər\n\n" +
+    "Jurnalist mənbə qoruması\nAktivistlər\nŞirkət daxili fayl şifrələməsi\nGit commit imzalama\nTəhlükəsizlik analizi\n\n" +
+    "12. Tətbiqlər\n\n" +
+    "Thunderbird + Enigmail\nGPGTools\nProtonMail (avtomatik)\nFairEmail\n\n" +
+    "13. OpenPGP Paketləri\n\n" +
+    "Public key paket\nSignature paket\nLiteral data paket\nCompressed data paket\nEncrypted session key paket\nEncrypted message paket\n\n" +
+    "14. PGP Güclü və Zəif Tərəflər\n\n" +
+    "Üstünlüklər:\n- Yüksək təhlükəsizlik\n- Mərkəzsiz Web of Trust\n- Fayl + email şifrələmə\n- Açıq mənbə\n\n" +
+    "Zəifliklər:\n- Çətin istifadə\n- Metadata gizlənmir\n- Private key itkisi kritikdir\n\n" +
+    "15. S/MIME\n\n" +
+    "Email təhlükəsizliyi üçün başqa standart.\nPGP-dən fərqi: PKI və CA-lar üzərində qurulub.\nKorporativ mühit üçün idealdır.\nX.509 sertifikatları istifadə edir.\n\n" +
+    "16. PGP və S/MIME Fərqləri\n\n" +
+    "PGP → Web of Trust, mərkəzsiz\n" +
+    "S/MIME → PKI, CA-lar\n\n" +
+    "PGP → fərdi istifadəçilər üçün\nS/MIME → şirkətlər üçün\n\n" +
+    "PGP → açarı istifadəçi yaradır\nS/MIME → CA verir\n\n"
+  )'>
+    <i class="bx bx-envelope"></i> PGP
+</a>
+</li>
+<li>
+  <a href="#" onclick='openRightSidebar(
+"S/MIME (Secure/Multipurpose Internet Mail Extensions)",
+"S/MIME — elektron poçtların məxfiliyini, bütövlüyünü və doğruluğunu qorumaq üçün istifadə edilən açıq açar kriptoqrafiyası əsaslı təhlükəsizlik standartıdır. E-maillərin şifrələnməsini və rəqəmsal imza ilə təsdiq edilməsini təmin edir.\n\n" +
+"Niyə yaranıb?\n" +
+"Əvvəllər e-poçtlar yalnız sadə mətn kimi göndərilirdi və təhlükəsizlik yox idi. MIME standartı faylların əlavə edilməsinə imkan versə də, təhlükəsizlik təmin etmirdi. Buna görə MIME-ın təhlükəsizliklə genişləndirilmiş versiyası – S/MIME yaradıldı. O, public–private açar kriptoqrafiyası ilə işləyir.\n\n" +
+"S/MIME Necə İşləyir?\n\n" +
+"S/MIME iki əsas funksiyanı yerinə yetirir:\n\n" +
+"1) Rəqəmsal İmza (Authentication + Integrity)\n\n" +
+"Mesajın:\n- kim tərəfindən göndərildiyini sübut edir\n- dəyişdirilmədiyini təsdiqləyir\n\n" +
+"İmzalama prosesi:\n" +
+"1. Göndərən mesajı yazır.\n" +
+"2. Mesajın hash dəyəri yaradılır.\n" +
+"3. Hash göndərənin private key-i ilə şifrələnir → rəqəmsal imza yaranır.\n" +
+"4. İmza mesaja əlavə edilərək göndərilir.\n\n" +
+"Alıcı:\n- Göndərənin public key-i ilə imzanı yoxlayır.\n- Hash uyğun gəlirsə — mesaj doğrudur və dəyişdirilməyib.\n\n" +
+"2) Şifrələmə (Confidentiality)\n\n" +
+"Mesajı yalnız nəzərdə tutulan alıcı oxuya bilir.\n\n" +
+"Şifrələmə prosesi:\n" +
+"1. Göndərən alıcının public key-ini götürür.\n" +
+"2. Mesaj simmetrik açarla şifrələnir.\n" +
+"3. Simmetrik açar isə alıcının public key-i ilə ayrıca şifrələnir.\n" +
+"4. Şifrəli mesaj + şifrəli açar birlikdə göndərilir.\n\n" +
+"Alıcı:\n- Private key ilə simmetrik açarı açır.\n- Sonra mesajın şifrəsini açır.\n\n" +
+"Bu üsul həm təhlükəsiz, həm də sürətlidir.\n\n" +
+"S/MIME-ın Təklif Etdiyi Xidmətlər\n\n" +
+"- Confidentiality – məlumatın məxfiliyi\n" +
+"- Authentication – göndərənin təsdiqi\n" +
+"- Integrity – dəyişikliklərin aşkar edilməsi\n" +
+"- Non-repudiation – göndərənin inkar edə bilməməsi\n" +
+"- Secure file transfer – faylların təhlükəsiz ötürülməsi\n" +
+"- Anti-phishing & anti-spoofing – saxtakarlıqdan qorunma\n\n" +
+"Üstünlüklər\n\n" +
+"- Güclü təhlükəsizlik (public key + imza)\n" +
+"- Mesajın dəyişdirilməsinin qarşısı\n" +
+"- Göndərənin kimliyinin təsdiqi\n" +
+"- Faylların təhlükəsiz ötürülməsi\n" +
+"- Hücumlara qarşı yüksək qoruma\n" +
+"- Korporativ e-poçtlar üçün standart həll\n\n" +
+"S/MIME Harada İşlədilir?\n\n" +
+"- Korporativ və dövlət e-poçtları\n" +
+"- Hüquqi sənədlərin göndərilməsi\n" +
+"- Beynəlxalq şirkət yazışmaları\n" +
+"- Phishing və spoofing-in qarşısı\n" +
+"- Fərdi e-poçtların qorunması\n\n" +
+"S/MIME Sertifikatı Necə Alınır?\n\n" +
+"1. CA seçilir (DigiCert, GlobalSign və s.).\n" +
+"2. E-mail və şəxsiyyət doğrulanır.\n" +
+"3. Sertifikat verilir və sistemə yüklənir.\n" +
+"4. Outlook/Apple Mail-də aktivləşdirilir.\n" +
+"5. Test e-maili göndərilir.\n\n" +
+"Yeni Tələblər (2024)\n\n" +
+"- Yeni intermediate CA-ların istifadəsi\n" +
+"- Mailbox validation məcburidir\n" +
+"- OU (Organization Unit) sahəsi çıxarılıb\n" +
+"- E-mail SAN bölməsinə əlavə olunmalıdır\n" +
+"- Yeni OID siyasətləri tətbiq edilir"
+)'> <i class="bx bx-mail-send"></i> S/MIME</a>
+</li>
+  </ul>
+    </div>
+  </div>
+  {% endif %}
+
+
+  <div id="sidebar-right">
+    <button onclick="closeRightSidebar()">✖ Bağla</button>
+    <h3 id="topic-title">Mövzu Başlığı</h3>
+    <p id="topic-content">Burada mövzu haqqında məlumat olacaq...</p>
+  </div>
+
+
+  <div class="main">
+    <div class="container mt-4 pt-4">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

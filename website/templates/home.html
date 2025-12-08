@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Outfit', sans-serif;
+        background-color: #0c0c27;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .buttons {
+       display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 50px;
+    }
+
+    .buttons button {
+        padding: 14px 32px;
+        font-size: 17px;
+        font-weight: 600;
+        border: none;
+        border-radius: 40px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        color: black;
+        background: linear-gradient(45deg, #01cda4, #00ffcc);
+        width: 250px;
+        text-align: center;
+    }
+
+    .buttons button:hover {
+        background: linear-gradient(45deg, #01cda4, #00ffcc);
+        transform: scale(1.05);
+    }
+
+
+</style>
+
+<div style="margin-top: 100px; color: white; text-shadow: 1px 1px 5px rgba(0,0,0,0.7);">
+    <h1><b>Kriptoqrafiya Dünyasına Xoş Gəldiniz!</b></h1>
+    <p>Burada şifrələri öyrənin, tapmacaları həll edin və özünüzü sınayın!</p>
+</div>
+
+<div class="buttons">
+    <a href="{{ url_for('views.learn') }}">
+        <button class="btn btn-primary">Kəşfə Başla</button>
+    </a>
+
+    <a href="{{ url_for('views.challenge') }}">
+        <button class="btn btn-success">Tapmacaları Həll Et</button>
+    </a>
+</div>
+{% endblock %}

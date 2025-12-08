@@ -1,0 +1,185 @@
+.blog-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.blog-post {
+    background-color: #1e1e2f;
+    padding: 20px;
+    border-radius: 10px;
+    color: #f0f0f0;
+}
+
+.blog-post h2 {
+    margin-bottom: 10px;
+    color: #00e0ff;
+}
+
+.blog-post p {
+    line-height: 1.5;
+}
+
+.comment {
+    background-color: #1c1c2a;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment p {
+    margin: 0;
+}
+
+.delete-btn {
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #006789;
+}
+
+/* Şərh formu səliqəsi */
+.comment-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.comment-form input[type="text"],
+.comment-form textarea {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.comment-form button {
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment-form button:hover {
+    background-color: #008fcc;
+}
+
+@media (max-width: 767px) {
+  /* Blog post container */
+  .blog-post {
+    padding: 10px !important;  
+    margin-bottom: 20px;
+    width: 100%;           
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Blog başlıqları və mətni */
+  .blog-post h3 {
+    font-size: 18px;        /* mobil üçün uyğun başlıq */
+    margin-bottom: 10px;
+  }
+
+  .blog-post p {
+    font-size: 14px;        /* oxunaqlı text */
+    line-height: 1.5;
+    width: 100%;
+  }
+
+  /* Comment form */
+  .comment-form {
+    display: flex;
+    flex-direction: column;  /* button və input sütun olaraq sıralansın */
+    width: 100%;
+  }
+
+  .comment-form input[type="text"],
+  .comment-form textarea {
+    width: 100% !important;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  .comment-form textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  .comment-form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+.blog-post img {
+  width: 100%;      /* container-ə uyğun olsun */
+  height: auto;
+  object-fit: cover; /* şəkil deformasiyasını önləyir */
+}
+
+@media (max-width: 767px) {
+  .mb-4 {
+    margin-bottom: 15px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .comment-form textarea,
+  .comment-form input[type="text"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    display: block;
+  }
+
+  .comment-form button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+.flash-messages {
+    list-style: none;
+    margin: 15px 0;
+    padding: 0;
+}
+
+.flash-messages li {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.flash-messages li.success {
+    background-color: #28a745;
+}
+
+.flash-messages li.error {
+    background-color: #dc3545;
+}

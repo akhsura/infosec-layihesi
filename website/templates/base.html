@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+   <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+  
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+   <!-- base.html içində -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_oyunlar.css') }}">
+{% block head %}{% endblock %}
+
+   <title>{% block title %}Home{% endblock %}</title>
+</head>
+<body{% if page_name %}data-page="{{ page_name }}"{% endif %}> 
+    <nav class="navbar navbar-expand-lg" style="background-color: #0b0b2e; position: relative; z-index: 1000;">
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <i class="fa fa-bars" style="color:white; font-size: 24px;"></i>
+</button>
+
+
+  <div class="collapse navbar-collapse bg-dark-custom" id="navbarNav">
+    <ul class="navbar-nav w-100 d-flex justify-content-between align-items-center flex-wrap">
+      <div class="d-flex flex-column flex-lg-row">
+        <li class="nav-item"><a class="nav-link text-white" href="/">Əsas Səhifə</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="/oyunlar">Oyunlar</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="/blog">Blog</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="/about">Haqqımızda</a></li>
+      </div>
+
+      <div class="d-flex flex-column flex-lg-row">
+        {% if user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link text-white" href="/logout">Çıxış</a></li>
+        {% else %}
+          <li class="nav-item"><a class="nav-link text-white" href="/login">Giriş</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="/sign-up">Qeydiyyatdan keçin</a></li>
+        {% endif %}
+      </div>
+    </ul>
+  </div>
+</nav>
+
+<div class="main">
+  <div class="container mt-4">
+    {% block content %}{% endblock %}
+  </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

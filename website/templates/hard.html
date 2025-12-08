@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Crypto Ustadı - Çətin Səviyyə{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/oyunlar.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="game-wrapper">
+    <div id="quiz-container">
+        <h1>Crypto Ustadı (Çətin Səviyyə)</h1>
+
+<div id="quiz">
+    <div id="scenario"></div>
+    <div class="question" id="question"></div>
+    <input type="text" id="answer" placeholder="Cavabınızı yazın...">
+    <button id="submitBtn">Cavabı Göndər</button>
+</div>
+<div class="result" id="result"></div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/oyunlar2.js') }}"></script>
+{% endblock %}

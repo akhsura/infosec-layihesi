@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+    <title>{% block title %}Kripto Testləri{% endblock %}</title>
+</head>    
+
+<body data-page="challenge">
+    <!-- Sol Sidebar -->
+    <div id="sidebar">
+        <div class="sidebar-section">
+            <div class="section-title">Çətinlik Səviyyəsi</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="setLevel('asan')"><i class='bx bx-diamond'></i> Asan</a></li>
+                <li><a href="#" onclick="setLevel('orta')"><i class='bx bx-layer'></i> Orta</a></li>
+                <li><a href="#" onclick="setLevel('çətin')"><i class='bx bx-rocket'></i> Çətin</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-title">Kriptoqrafiya Alqoritmləri</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="openChallenge('Tərs Mətn')"><i class='bx bx-rotate-left'></i> Tərs Mətn</a></li>
+                <li><a href="#" onclick="openChallenge('Nömrəli Şifrələmə')"><i class='bx bx-hash'></i> Nömrəli Şifrələmə</a></li>
+                <li><a href="#" onclick="openChallenge('Sezar Şifrəsi')"><i class='bx bx-key'></i> Sezar Şifrəsi</a></li>
+                <li><a href="#" onclick="openChallenge('ROT13')"><i class='bx bx-cog'></i> ROT13</a></li>
+                <li><a href="#" onclick="openChallenge('Affine Şifrəsi')"><i class='bx bx-target-lock'></i> Affine Şifrəsi</a></li>
+                <li><a href="#" onclick="openChallenge('Playfair Şifrəsi')"><i class='bx bx-grid'></i> Playfair Şifrəsi</a></li>
+                <li><a href="#" onclick="openChallenge('Vigenère Şifrəsi')"><i class='bx bx-lock'></i> Vigenère Şifrəsi</a></li>
+                <li><a href="#" onclick="openChallenge('Hill Şifrəsi')"><i class='bx bx-math'></i> Hill Şifrəsi</a></li>
+                <li><a href="#" onclick="openChallenge('Base64')"><i class='bx bx-code-alt'></i> Base64</a></li>
+            </ul>
+        </div>
+   <div class="sidebar-section">
+        <div class="section-title">Təhlükəsizlik Protokolları</div>
+        <ul class="nav-links">
+            <li><a href="#" onclick="openChallenge('SSL/TLS')"><i class='bx bx-shield'></i> SSL/TLS</a></li>
+            <li><a href="#" onclick="openChallenge('HTTPS')"><i class='bx bx-lock'></i> HTTPS</a></li>
+            <li><a href="#" onclick="openChallenge('VPN')"><i class='bx bx-network-chart'></i> VPN</a></li>
+            <li><a href="#" onclick="openChallenge('IPSec')"><i class='bx bx-shield-alt'></i> IPSec</a></li>
+            <li><a href="#" onclick="openChallenge('Kerberos')"><i class='bx bx-user-check'></i> Kerberos</a></li>
+            <li><a href="#" onclick="openChallenge('RADIUS')"><i class='bx bx-user-pin'></i> RADIUS</a></li>
+            <li><a href="#" onclick="openChallenge('PGP')"><i class='bx bx-envelope'></i> PGP</a></li>
+            <li><a href="#" onclick="openChallenge('S/MIME')"><i class='bx bx-mail-send'></i> S/MIME</a></li>
+        </ul>
+    </div>
+</div>>
+
+    <!-- Sağ Sidebar -->
+    <div id="sidebar-right">
+        <button onclick="closeRightSidebar()" class="close-btn">✖ Bağla</button>
+        <div class="right-content">
+            <h4 id="topic-title">Kriptoqrafiya Tapşırığı</h4>
+            <div id="topic-content" class="mt-3">Burada tapşırıq haqqında məlumat olacaq...</div>
+
+            <iframe 
+  id="simulationFrame"
+  src=""
+  style="width:100%; height:350px; border:none; margin-top:15px; display:none;">
+</iframe>
+
+            <div class="mt-4">
+                 <p>Söz: <strong>cryptokey2025</strong></p>
+                <label><b>Cavabınız:</b></label>
+                <div id="topic-content" class="mt-3">
+</div>
+                <input type="text" id="userAnswer" placeholder="Cavabınızı yazın..." class="form-control mb-2">
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary flex-fill">Yoxla</button>
+                    <button class="btn btn-secondary flex-fill" onclick="document.getElementById('userAnswer').value=''">Təmizlə</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Səviyyə mesajı üçün -->
+<div id="level-msg"></div>
+
+    <!-- Əsas Kontent -->
+    <div class="main container mt-5">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script1.js') }}"></script>
+</body>
+</html>

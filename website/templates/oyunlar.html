@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Games{% endblock %}
+
+{% block content %}
+<header>
+    <h1>🔐 CryptoQuest Oyunları</h1>
+    <p>Kripto biliklərini tapmacalar və ssenarilər üzərindən öyrən!</p>
+</header>
+ 
+<section class="game-section">
+    <div class="game-card easy">
+        <h2>🧩 Şifrənin İzi ilə</h2>
+        <p class="level">Asan səviyyə – 3–5 dəqiqə</p>
+        <p class="desc">Sadə tapmacalarla gizli kodu tap və əsas prinsipləri öyrən.</p>
+        <a href="/easy" class="btn">Başla</a>
+    </div>
+
+    <div class="game-card medium">
+        <h2>🕵️ Kodun Ardınca</h2>
+        <p class="level">Orta səviyyə – 5 dəqiqə</p>
+        <p class="desc">Kibertəhlükəsizlik ssenarisində tapşırıqları addım-addım həll et.</p>
+        <a href="/medium" class="btn">Başla</a>
+    </div>
+
+    <div class="game-card hard">
+        <h2>🧠 Crypto Ustadı</h2>
+        <p class="level">Çətin səviyyə – 8–10 dəqiqə</p>
+        <p class="desc">Qədim və müasir şifrələri birləşdirərək sirri aç!</p>
+        <a href="/hard" class="btn">Başla</a>
+    </div>
+</section>
+{% endblock %}

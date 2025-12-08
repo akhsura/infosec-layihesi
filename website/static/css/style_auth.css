@@ -1,0 +1,31 @@
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.auth-container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+
+.flash-messages {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.flash-messages li {
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.flash-messages li.error { background-color: #ff4b4b; color: white; }
+.flash-messages li.success { background-color: #4caf50; color: white; }
+

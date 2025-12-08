@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<title>S/MIME İnteraktiv Simulyasiya</title>
+<style>
+body {
+    font-family: Arial, sans-serif, "Segoe UI Emoji", sans-serif;
+    background:#020617; color:white; padding:15px;
+}
+.step { display:none; padding:15px; background:#0f172a; border-radius:10px; margin-bottom:10px; }
+.step.active { display:block; animation:fadeIn 0.5s ease-in-out; }
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+button { margin-top:10px; padding:8px 14px; border:none; border-radius:6px; cursor:pointer; }
+.btn-next { background:#22c55e; }
+.btn-check { background:#3b82f6; }
+.result { margin-top:8px; font-weight:bold; }
+input { width:100%; padding:6px; border-radius:6px; border:none; margin-top:6px; }
+.diagram { display:flex; justify-content:space-between; align-items:center; margin-top:10px; font-weight:bold; }
+.arrow { margin:0 10px; font-size:24px; animation:moveArrow 1s ease-in-out; }
+@keyframes moveArrow { 0% {opacity:0; transform: translateY(-10px);} 100% {opacity:1; transform: translateY(0);} }
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .step {
+        padding: 10px;
+    }
+
+    input#answer {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 0;
+    }
+
+    .diagram {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 14px;
+    }
+
+    .arrow {
+        font-size: 20px;
+        margin: 5px 0;
+    }
+}
+</style>
+</head>
+<body>
+
+<h3>✉️ S/MIME İnteraktiv Simulyasiya</h3>
+<p>S/MIME protokolunun necə işlədiyini addım-addım öyrənəcəksiniz.</p>
+
+<!-- Step 1 -->
+<div class="step active" id="step1">
+<h4>1️⃣ Mətnin yaradılması (Plaintext)</h4>
+<p>İstifadəçi göndərmək istədiyi e-poçt mesajını yazır.</p>
+<button class="btn-next" onclick="nextStep(2)">Növbəti mərhələ</button>
+</div>
+
+<!-- Step 2 -->
+<div class="step" id="step2">
+<h4>2️⃣ Mesajın şifrələnməsi və imzalanması (Encrypt & Sign)</h4>
+<p>Mesaj alıcının açıq açarı ilə şifrələnir və göndərənin şəxsi açarı ilə imzalanır.</p>
+<div class="diagram"><span>Plaintext</span><span class="arrow">➡️</span><span>Encrypted 🔒 + Signed ✍️</span></div>
+<button class="btn-next" onclick="nextStep(3)">Növbəti mərhələ</button>
+</div>
+
+<!-- Step 3 -->
+<div class="step" id="step3">
+<h4>3️⃣ Mesajın göndərilməsi (Send Email)</h4>
+<p>Şifrələnmiş və imzalanmış mesaj internet vasitəsilə alıcıya çatdırılır.</p>
+<div class="diagram"><span>Sender</span><span class="arrow">➡️</span><span>Network</span><span class="arrow">➡️</span><span>Receiver</span></div>
+<button class="btn-next" onclick="nextStep(4)">Növbəti mərhələ</button>
+</div>
+
+<!-- Step 4 -->
+<div class="step" id="step4">
+<h4>4️⃣ Mesajın yoxlanması və deşifrlənməsi (Verify & Decrypt)</h4>
+<p>Alıcı mesajı öz şəxsi açarı ilə açır və göndərənin imzasını təsdiqləyir.</p>
+<div class="diagram"><span>Encrypted 🔒 + Signed ✍️</span><span class="arrow">➡️</span><span>Decrypted & Verified</span></div>
+<button class="btn-next" onclick="nextStep(5)">Mini Testə Başla</button>
+</div>
+
+<!-- Step 5: Mini Test -->
+<div class="step" id="step5">
+<h4>✅ Mini Test</h4>
+<p>S/MIME əsas məqsədi nədir?</p>
+<input type="text" id="answer" placeholder="Cavab yazın...">
+<button class="btn-check" onclick="checkAnswer()">Yoxla</button>
+<div id="result" class="result"></div>
+</div>
+
+<script>
+function nextStep(step){
+    document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+    document.getElementById("step"+step).classList.add('active');
+}
+
+function checkAnswer(){
+    const answer = document.getElementById("answer").value.toLowerCase();
+    const result = document.getElementById("result");
+    const input = document.getElementById("answer");
+    const btn = document.querySelector(".btn-check");
+
+    const keywords = ["şifrələmə","imza","təhlükəsizlik","gizlilik","e-mail","verifikasiya", "təhlükəsiz"];
+    const correct = keywords.some(k=>answer.includes(k));
+
+    if(correct){
+        result.innerHTML="&#9989; Düzdür! S/MIME e-poçt mesajlarının gizliliyini və doğruluğunu təmin edir.";
+        result.style.color="#22c55e";
+        input.style.display="none";
+        btn.style.display="none";
+    }else{
+        result.innerHTML="&#10060; Səhvdir. Yenidən cəhd et.";
+        result.style.color="#ef4444";
+    }
+}
+
+document.getElementById("answer").addEventListener("keypress",function(e){
+    if(e.key==="Enter"){ checkAnswer(); }
+});
+</script>
+
+</body>
+</html>
