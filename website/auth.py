@@ -7,7 +7,7 @@ from sqlalchemy.exc import IntegrityError
 
 auth = Blueprint('auth', __name__)
 
-# ---------------- LOGIN ----------------
+
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -43,7 +43,7 @@ def login():
 
     return render_template('login.html', user=current_user)
 
-# ---------------- LOGOUT ----------------
+
 @auth.route('/logout')
 @login_required
 def logout():
@@ -51,7 +51,7 @@ def logout():
     flash('Sistemdən çıxıldı.', 'success')
     return redirect(url_for('views.home'))
 
-# ---------------- SIGN-UP ----------------
+
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     errors = []
@@ -66,7 +66,7 @@ def sign_up():
         print(f"Name: {first_name}")
         print(f"Passwords match: {password1 == password2}")
 
-        # Validation
+        
         if not email or len(email) < 4:
             errors.append('Email ən azı 4 simvol olmalıdır.')
         if not first_name or len(first_name) < 2:
@@ -82,7 +82,7 @@ def sign_up():
                 errors.append('Email artıq mövcuddur.')
             else:
                 try:
-                    # ✅ CORRECT: Use scrypt hashing (modern, secure)
+                    
                     hashed_password = generate_password_hash(password1, method='scrypt')
                     print(f"Hash method: {hashed_password.split(':')[0]}")
                     
@@ -109,26 +109,3 @@ def sign_up():
                     errors.append(f'Xəta: {str(e)}')
 
     return render_template('sign_up.html', errors=errors, user=current_user)
-
-# ---------------- CHANGE PASSWORD ----------------
-@auth.route('/change-password', methods=['GET', 'POST'])
-@login_required
-def change_password():
-    if request.method == 'POST':
-        current_pass = request.form.get('current_password')
-        new_pass = request.form.get('new_password')
-        confirm_pass = request.form.get('confirm_password')
-
-        if not check_password_hash(current_user.password, current_pass):
-            flash('Köhnə şifrə səhvdir!', 'error')
-        elif new_pass != confirm_pass:
-            flash('Yeni şifrələr uyğun gəlmir!', 'error')
-        elif len(new_pass) < 7:
-            flash('Yeni şifrə ən az 7 simvol olmalıdır!', 'error')
-        else:
-            current_user.password = generate_password_hash(new_pass, method='scrypt')
-            db.session.commit()
-            flash('Şifrəniz uğurla dəyişdirildi!', 'success')
-            return redirect(url_for('views.home'))
-
-    return render_template("change_password.html", user=current_user)
